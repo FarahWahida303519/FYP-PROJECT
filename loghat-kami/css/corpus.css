@@ -1,0 +1,461 @@
+/* Loghat Kami · Corpus page — warm, hand-made feel (songket / tenun), no stock-photo look */
+
+.corpus-page {
+    --c1: #8a2a36;
+    --c2: var(--green);
+    --c3: var(--gold);
+    --songket: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Cpath d='M16 2 30 16 16 30 2 16Z' fill='none' stroke='%23e9c46a' stroke-width='1.1'/%3E%3Cpath d='M16 10 22 16 16 22 10 16Z' fill='%23e9c46a'/%3E%3C/svg%3E");
+    max-width: 1240px;
+    padding-top: 36px;
+}
+
+
+/* ---------- Hero ---------- */
+
+.corpus-hero {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    margin-bottom: 18px;
+}
+
+.corpus-hero::before {
+    /* tenun stripe on top */
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 7px;
+    z-index: 2;
+    background: repeating-linear-gradient(90deg, var(--c1) 0 22px, var(--c3) 22px 30px, #103e3c 30px 52px, var(--c3) 52px 60px);
+}
+
+.corpus-hero-text {
+    padding: 46px 44px 38px
+}
+
+.corpus-hero .eyebrow {
+    font-size: 10px;
+    letter-spacing: 2.6px;
+    margin-bottom: 12px
+}
+
+.corpus-hero h1 {
+    font: 600 clamp(32px, 3.6vw, 46px)/1.15 'Playfair Display', Georgia, serif;
+    letter-spacing: -.8px;
+    margin: 0 0 12px
+}
+
+.corpus-hero p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
+    max-width: 480px;
+    margin: 0 0 22px
+}
+
+.corpus-quick {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px
+}
+
+.corpus-quick span {
+    font-size: 12px;
+    color: var(--muted);
+    margin-right: 2px
+}
+
+.corpus-quick button {
+    background: var(--surface2);
+    color: var(--text);
+    border: 1px dashed var(--c3);
+    border-radius: 999px;
+    padding: 6px 16px;
+    font: 600 13px 'DM Sans', Arial, sans-serif;
+    transition: .2s;
+}
+
+.corpus-quick button:hover {
+    background: #103e3c;
+    color: #fff8e9;
+    border-style: solid;
+    transform: translateY(-2px)
+}
+
+.corpus-hero-art {
+    position: relative;
+    min-height: 200px;
+    background: var(--songket) 0 0/32px 32px, linear-gradient(135deg, #0a2c2b, #103e3c);
+    background-blend-mode: soft-light, normal;
+}
+
+.corpus-hero-art::after {
+    /* big diamond medallion */
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 130px;
+    height: 130px;
+    translate: -50% -50%;
+    rotate: 45deg;
+    border: 3px solid #e9c46a;
+    background: #8a2a36;
+    box-shadow: 0 0 0 10px #103e3c, 0 0 0 12px #e9c46a, 0 0 0 26px #0a2c2b66;
+}
+
+.corpus-hero-art::before {
+    content: "❀";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    z-index: 1;
+    font-size: 44px;
+    color: #e9c46a;
+}
+
+
+/* ---------- Note ---------- */
+
+.corpus-note {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin: 0 0 22px;
+    padding: 10px 16px;
+    font-size: 12px;
+    color: var(--muted);
+    background: var(--surface2);
+    border-radius: 12px;
+}
+
+.corpus-note b {
+    white-space: nowrap;
+    flex-shrink: 0;
+    background: var(--c3);
+    color: #192b26;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 999px
+}
+
+
+/* ---------- Toolbar ---------- */
+
+.corpus-page .toolbar {
+    margin-top: 0;
+    gap: 12px
+}
+
+.corpus-page .toolbar .search {
+    border-radius: 999px;
+    padding: 4px 6px 4px 20px;
+    border: 1.5px solid var(--line);
+    transition: .2s
+}
+
+.corpus-page .toolbar .search:focus-within {
+    border-color: var(--c3);
+    box-shadow: 0 0 0 4px #c9953a26
+}
+
+.corpus-page .toolbar select,
+.corpus-page .toolbar .outline {
+    border-radius: 999px;
+    height: 48px;
+    padding: 0 20px;
+    border: 1.5px solid var(--line)
+}
+
+.corpus-page .toolbar .outline:hover {
+    border-color: var(--c3);
+    color: var(--c3)
+}
+
+.corpus-page #result-count {
+    margin: 16px 4px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted)
+}
+
+
+/* ---------- Word cards ---------- */
+
+.corpus-page .word-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px
+}
+
+.corpus-page .word-card {
+    --accent: var(--c1);
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    box-shadow: 0 8px 22px #0a2c2b0f;
+    overflow: hidden;
+    transition: transform .25s, box-shadow .25s;
+}
+
+.corpus-page .word-card:nth-child(3n+2) {
+    --accent: var(--c2)
+}
+
+.corpus-page .word-card:nth-child(3n) {
+    --accent: var(--c3)
+}
+
+.corpus-page .word-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    background: var(--accent)
+}
+
+.corpus-page .word-card::after {
+    /* tiny tenun edge */
+    content: "";
+    position: absolute;
+    left: 6px;
+    right: 0;
+    bottom: 0;
+    height: 4px;
+    background: repeating-linear-gradient(90deg, var(--accent) 0 14px, transparent 14px 20px);
+    opacity: .5;
+}
+
+.corpus-page .word-card:hover {
+    transform: translateY(-6px) rotate(-.4deg);
+    box-shadow: 0 20px 38px #0a2c2b24
+}
+
+.corpus-page .word-body {
+    padding: 24px 24px 22px 30px
+}
+
+.corpus-page .word-title {
+    align-items: flex-start
+}
+
+.corpus-page .word-title h3 {
+    font: 600 36px/1.1 'Playfair Display', Georgia, serif;
+    letter-spacing: -.5px;
+    margin: 0
+}
+
+.corpus-page .audio-button {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    font-size: 15px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    border: 0;
+    box-shadow: 0 4px 10px #00000026;
+    transition: .2s;
+}
+
+.corpus-page .word-card:nth-child(3n) .audio-button {
+    color: #192b26
+}
+
+.corpus-page .audio-button:hover {
+    transform: scale(1.12)
+}
+
+.corpus-page .word-card p.word-meaning {
+    font: 500 16px/1.45 'DM Sans', Arial, sans-serif;
+    color: var(--text);
+    min-height: 46px;
+    margin: 6px 0 16px
+}
+
+.corpus-page .word-bubble {
+    position: relative;
+    background: var(--surface2);
+    border-radius: 6px 18px 18px 18px;
+    padding: 30px 18px 16px;
+    min-height: 104px;
+}
+
+.corpus-page .word-bubble::before {
+    content: "“";
+    position: absolute;
+    left: 14px;
+    top: -4px;
+    font: 700 54px/1 'Playfair Display', Georgia, serif;
+    color: var(--accent);
+    opacity: .75;
+}
+
+.corpus-page .bubble-label {
+    position: absolute;
+    right: 16px;
+    top: 12px;
+    font: 700 8px 'DM Sans', Arial, sans-serif;
+    letter-spacing: 1.4px;
+    color: var(--muted)
+}
+
+.corpus-page .word-bubble q {
+    display: block;
+    font: italic 16px/1.6 Georgia, serif;
+    color: var(--text);
+    quotes: none;
+    overflow-wrap: anywhere
+}
+
+.corpus-page .word-meta {
+    margin-top: 18px;
+    font-size: 12px
+}
+
+.corpus-page .district-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--surface2);
+    border: 1px solid var(--line);
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.corpus-page .district-chip::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    transform: rotate(45deg);
+    border-radius: 1px
+}
+
+.corpus-page .word-meta button {
+    font: 700 12px 'DM Sans', Arial, sans-serif;
+    color: var(--c2)
+}
+
+.corpus-page .word-meta button:hover {
+    text-decoration: underline
+}
+
+
+/* ---------- Table view, empty, pagination ---------- */
+
+.corpus-page .table-wrap {
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    overflow: hidden
+}
+
+.corpus-page th {
+    background: #103e3c;
+    color: #e9c46a;
+    font-size: 11px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase
+}
+
+.corpus-page td {
+    font-size: 13px
+}
+
+.corpus-page tbody tr:hover {
+    background: var(--surface2)
+}
+
+.corpus-page .empty {
+    border: 2px dashed var(--c3);
+    border-radius: 20px;
+    background: var(--surface);
+    font-size: 15px;
+    padding: 56px 20px
+}
+
+.corpus-page .empty::before {
+    content: "❀";
+    display: block;
+    font-size: 34px;
+    color: var(--c3);
+    margin-bottom: 8px
+}
+
+.corpus-page .pagination button {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    font-weight: 700
+}
+
+.corpus-page .pagination button.active {
+    background: #103e3c;
+    color: #e9c46a;
+    border-color: #103e3c
+}
+
+
+/* ---------- Responsive ---------- */
+
+@media(max-width:1000px) {
+    .corpus-page .word-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr))
+    }
+    .corpus-hero {
+        grid-template-columns: 1fr
+    }
+    .corpus-hero-art {
+        min-height: 110px;
+        order: -1
+    }
+    .corpus-hero-art::after {
+        width: 70px;
+        height: 70px;
+        box-shadow: 0 0 0 6px #103e3c, 0 0 0 8px #e9c46a
+    }
+    .corpus-hero-art::before {
+        font-size: 26px
+    }
+}
+
+@media(max-width:650px) {
+    .corpus-page {
+        padding-top: 22px
+    }
+    .corpus-page .word-grid {
+        grid-template-columns: 1fr;
+        gap: 16px
+    }
+    .corpus-hero-text {
+        padding: 30px 22px 26px
+    }
+    .corpus-page .word-title h3 {
+        font-size: 32px
+    }
+    .corpus-page .toolbar select {
+        width: calc(50% - 6px)
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+    .corpus-page * {
+        transition: none!important
+    }
+    .corpus-page .word-card:hover {
+        transform: none
+    }
+}

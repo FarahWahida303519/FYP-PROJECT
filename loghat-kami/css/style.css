@@ -12,6 +12,7 @@
     --shadow: 0 16px 45px #0002;
     color-scheme: dark
 }
+.profile-signed-in{display:inline-flex;align-items:center;gap:8px}.profile-signed-in .profile-avatar{width:24px;height:24px;font-size:13px}.toolbar{margin-bottom:0}.search-submit{background:var(--gold);color:var(--bg);border-radius:4px;padding:9px 16px;font-weight:600;white-space:nowrap}.toolbar .search{min-width:260px}.toolbar .search-submit{width:auto;margin:0}.toolbar select{margin-top:0}
 
 html[data-theme=light] {
     --bg: #f8f5ed;
