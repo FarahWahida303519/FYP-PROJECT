@@ -1,0 +1,1049 @@
+ 
+ 
+ PAGE 1 
+ 
+ 
+STIZK3993 ACADEMIC PROJECT 1 
+Project Proposal 
+   
+Project Title: 
+Voices of the North : An AI-Assisted Crowdsourcing 
+System For Documenting Kedah Malay Dialect  
+ 
+ 
+  
+Student Name : FARAH WAHIDA BINTI AHMAD FAIZU 
+Matric Number  : 303519 
+Supervisor : DR MUSYRIFAH BINTI MAHMOD 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ PAGE 2 
+ 
+Table of Contents 
+ 
+1.0 INTRODUCTION.............................................................................................................. 3 
+2.0 PREVIOUS WORKS ........................................................................................................ 4 
+2.1 Pusat Rujukan Persuratan Melayu .............................................................................. 4 
+2.2  Kamus Dewan Perdana (DBP) ..................................................................................... 5 
+2.3 The SEAlang Library..................................................................................................... 6 
+2.4 Glosbe .............................................................................................................................. 7 
+2.5  ChatGPT ........................................................................................................................ 7 
+3.0 PROBLEM STATEMENT ............................................................................................. 16 
+4.0 OBJECTIVES .................................................................................................................. 18 
+4.1 Specific Objectives: ...................................................................................................... 18 
+5.0 PROJECT SCOPE........................................................................................................... 19 
+6.0 PROJECT SIGNIFICANCE .......................................................................................... 20 
+7.0 METHODOLOGY .......................................................................................................... 21 
+8.0 GANTT CHART .............................................................................................................. 23 
+9.0 REFERENCES ................................................................................................................. 26 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ PAGE 3 
+ 
+1.0 INTRODUCTION 
+ 
+ 
+The Malay language consists of various regional dialects that reflect linguistic diversity, 
+cultural identity and community interaction. The Kedah Malay dialect contains distinctive 
+variations in vocabulary and pronunciation. Previous studies have examined  vowel-
+lengthening processes in Hulu Sik (Norfazila  Ab. Hamid & Rahim Aman, 2014) and lexical 
+comprehension among speakers in Pulau Tuba and Satun (Harishon Radzi et al., 2018). 
+However, these studies focus on specific linguistic characteristics, highlighting the opportunity 
+for continuous digital document ation of Kedah Malay vocabulary, contextual meanings and 
+authentic pronunciation recordings. 
+ 
+Digital platforms provide opportunities for collecting and preserving linguistic information 
+through community participation (Androutsopoulos , 2014). Crowdsourcing enables local 
+speakers to contribute language data including text and audio recordings through accessible 
+digital platforms (Ardila et al., 2020; Leemann et al., 2016). Nevertheless, community generate 
+data can contain inconsistencies that require appropriate verification. Advances in Artificial 
+Intelligence (AI) and Natural Language Processing (NLP) offer potential approaches for 
+processing linguistic information through pretrained language models and few  shot learning 
+(Devlin et al., 2019; Brown et al., 2020). However, underrepresented language varieties face 
+challenges because linguistic resources are unevenly distributed across languages (Joshi et al., 
+2020). 
+ 
+To address these challenges, Loghat Kami is proposed as a web -based platform under the 
+project Voices of the North  that integrates multimodal crowdsourcing, AI -assisted screening 
+and language expert verification to document and preserve the Kedah Malay dialect. 
+Community members can contribute dialect vocabulary, contextual meanings, example 
+sentences and audio pronunciation recordings. The AI component will screen submissions for 
+spelling, pronunciation and language use  meanwhile language experts make the final 
+verification decisions. Verified contributions will be organized into a structured digital dialect 
+corpus to support linguistic preservation, learning, future research and language -based 
+applications. 
+ 
+ 
+ 
+ PAGE 4 
+ 
+2.0 PREVIOUS WORKS 
+ 
+Various digital platforms and linguistic resources have been developed to support language 
+documentation, translation and linguistic research. These platforms adopt different approaches, 
+including institutional dictionaries, digital language corpora, community based contributions 
+and Artificial Intelligence (AI)-assisted language processing. Existing platforms such as Pusat 
+Rujukan Persuratan Melayu (PRPM), Kamus Dewan Perdana, the SEAlang Library, Glosbe 
+and ChatGPT provide different functionalities for managing linguistic information. 
+ 
+ 
+2.1 Pusat Rujukan Persuratan Melayu 
+ 
+ 
+Figure 2.1: Pusat Rujukan Persuratan Melayu Home Interface 
+ 
+Pusat Rujukan Persuratan Melayu (PRPM) is an online linguistic reference portal maintained 
+by Dewan Bahasa dan Pustaka (DBP). The platform provides various Malay language 
+resources including dictionary definitions, terminology, linguistic references and regional 
+dialect glossaries. One of its resources is the Glosari Dialek Kedah which documents Kedah 
+Malay vocabulary through phonetic transcription, word classification, meanings, example 
+sentences and standard Malay equivalents. 
+ 
+However, PRPM primarily functions as a language reference portal rather than a dedicated 
+platform for continuous community -based collection of multimodal dialect contributions. In 
+
+ 
+ 
+ PAGE 5 
+ 
+comparison, the proposed Loghat Kami system aims to allow local speakers to contribute 
+Kedah Malay vocabulary, contextual meanings and audio pronunciation recordings through a 
+structured submission process. These contributions will undergo AI -assisted preliminary 
+screening and final language expert verification before being accepted into the verified dialect 
+corpus. 
+ 
+ 
+2.2  Kamus Dewan Perdana (DBP) 
+  
+ 
+Figure 2.2: Kamus Dewan Perdana Home Interface 
+ 
+Kamus Dewan Perdana is a comprehensive Malay language dictionary published by Dewan 
+Bahasa dan Pustaka (DBP). It contains extensive linguistic information including word 
+definitions, pronunciation, grammatical classification, usage examples, etymological 
+information and vocabulary from regional dialects. The dictionary serves as an authoritative 
+reference for understanding Malay vocabulary and its usage across different linguistic contexts. 
+Although Kamus Dewan Perdana provides comprehensive linguistic documentation, its 
+primary purpose is to serve as a reference dictionary rather than a platform for continuous 
+community-based dialect data collection. The proposed Loghat Kami system adopts a different 
+approach by encouraging local communities to contribute dialect expressions, meanings and 
+pronunciation recordings directly. Nevertheless, Kamus Dewan Perdana provides a useful 
+reference for organizing linguistic entries and presenting accurate vocabulary information 
+within a structured digital corpus. 
+
+ 
+ 
+ PAGE 6 
+ 
+2.3 The SEAlang Library 
+ 
+ 
+Figure 2.3: The SEAlang Library Home Interface 
+ 
+ 
+The SEAlang Library is a digital linguistic resource that provides access to dictionaries and 
+language data for Southeast Asian languages. Its Malay language resources include searchable 
+linguistic references and text -based information that support language learning,  comparative 
+linguistic studies and academic research. The platform demonstrates how digital resources can 
+improve the accessibility and organization of linguistic information. 
+ 
+However, the Malay resources examined in this review primarily emphasize linguistic 
+reference and information retrieval rather than a dedicated system for continuously collecting 
+and verifying community -generated Kedah Malay dialect data. In comparison, Lo ghat Kami 
+aims to support community contributions in multiple formats  including text and audio  
+meanwhile incorporating AI -assisted preliminary screening and expert verification. This 
+approach is intended to support the development of a structured and continuously expandable 
+Kedah Malay dialect corpus. 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ PAGE 7 
+ 
+2.4 Glosbe 
+ 
+ 
+ 
+Figure 2.4: Glosbe Home Interface 
+ 
+Glosbe is a multilingual online dictionary that provides translations, word meanings, example 
+sentences and pronunciation resources. It also allows users to contribute linguistic information, 
+including translations for the Malay–Kedah Malay language pair. 
+ 
+However, community contributions may contain inconsistencies that affect the accuracy and 
+reliability of linguistic information. Previous studies highlight the importance of quality control 
+in crowdsourced language data (Ardila et al., 2020; Leemann et al. , 2016). Therefore, Loghat 
+Kami proposes AI-assisted preliminary screening followed by expert verification to ensure the 
+reliability of contributed Kedah Malay dialect data. 
+ 
+ 
+2.5  ChatGPT 
+ 
+
+ 
+ 
+ PAGE 8 
+ 
+ 
+Figure 2.5: ChatGPT Home Interface 
+ 
+ChatGPT is a generative Artificial Intelligence (AI) platform based on Large Language Model 
+(LLM) technology that supports various language -related tasks  including translation, 
+vocabulary explanations and text generation. Previous research has demonstrated the potential 
+of pretrained language models for natural language understanding through fine-tuning (Devlin 
+et al., 2019) meanwhile generative language models have shown capabilities in text generation 
+and few shot learning (Brown et al., 2020). 
+ 
+However, general -purpose language models are not specifically designed for authoritative 
+documentation of regional dialects such as Kedah Malay. Linguistic resources remain unevenly 
+distributed across languages, creating challenges for Natural Language Pro cessing (NLP) 
+applications involving underrepresented language varieties (Joshi et al., 2020). Therefore, AI-
+generated dialect information may require expert verification to ensure its contextual and 
+linguistic accuracy. 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ PAGE 9 
+ 
+Previous 
+Work 
+Target User Main Focus 
+ 
+Features 
+ 
+Benefits Limitations 
+ 
+Pusat 
+Rujukan 
+Persuratan 
+Melayu 
+(PRPM) 
+• General users 
+• Students 
+• Researchers 
+Malay language 
+reference and 
+linguistic 
+resources. 
+• Provides 
+explanations of 
+Malay words to 
+help users 
+understand their 
+meanings. 
+• Identifies the 
+grammatical 
+category of a 
+word. 
+• Shows how 
+certain words are 
+pronounced 
+using phonetic 
+symbols, 
+including the 
+International 
+• Provides reliable 
+Malay language 
+references 
+maintained by 
+Dewan Bahasa 
+dan Pustaka 
+(DBP). 
+• Offers easy 
+access to 
+linguistic 
+resources through 
+an online 
+platform. 
+• Provides 
+comprehensive 
+language 
+references, 
+including 
+• Limited support for 
+direct community 
+contributions of 
+dialect data. 
+• Provides phonetic 
+transcriptions but 
+lacks readily 
+available authentic 
+audio pronunciation 
+recordings in the 
+reviewed dialect 
+entries. 
+ 
+ 
+ PAGE 10 
+ 
+Phonetic 
+Alphabet (IPA). 
+• Provides 
+sentences 
+demonstrating 
+how words are 
+used in context. 
+• Provides 
+collections of 
+vocabulary from 
+different Malay 
+dialects, 
+including Kedah 
+Malay. 
+vocabulary, 
+terminology and 
+regional dialects. 
+. 
+ 
+Kamus 
+Dewan 
+Perdana 
+(DBP) 
+• General public 
+• Students 
+• Educators 
+• Researchers 
+and linguists 
+Comprehensive 
+Malay language 
+dictionary 
+covering 
+vocabulary, word 
+• Provides detailed 
+definitions and 
+meanings of 
+Malay words. 
+• Identifies word 
+classes, such as 
+• Provides 
+authoritative and 
+reliable Malay 
+language 
+references 
+published by 
+• Primarily focuses on 
+dictionary 
+references rather 
+than interactive 
+dialect 
+documentation. 
+ 
+ 
+ PAGE 11 
+ 
+• Writers and 
+language 
+professionals 
+ 
+meanings and 
+language usage. 
+nouns, verbs and 
+adjectives. 
+• Includes 
+etymological 
+information 
+explaining the 
+origins of words. 
+• Documents 
+regional Malay 
+dialect 
+vocabulary and 
+meanings 
+ 
+Dewan Bahasa 
+dan Pustaka 
+(DBP). 
+• Offers 
+comprehensive 
+vocabulary 
+coverage 
+including regional 
+Malay dialects. 
+• Supports accurate 
+understanding of 
+word meanings, 
+spelling, 
+pronunciation and 
+language usage. 
+• Preserves 
+linguistic and 
+cultural 
+knowledge 
+through the 
+• Does not provide a 
+dedicated 
+crowdsourcing 
+module for direct 
+community 
+contributions. 
+• Limited authentic 
+audio support where 
+primarily provides 
+written 
+pronunciation 
+information 
+meanwhile nativ e 
+speaker dialect 
+audio recordings are 
+not clearly 
+documented in the 
+reviewed features. 
+ 
+ 
+ PAGE 12 
+ 
+documentation of 
+Malay 
+vocabulary. 
+ 
+The 
+SEAlang 
+Library 
+• Linguists and 
+language 
+researchers. 
+• Students and 
+educators. 
+• Scholars 
+studying 
+Southeast 
+Asian 
+languages 
+ 
+Provide digital 
+dictionaries and 
+linguistic 
+resources for 
+Southeast Asian 
+languages to 
+support language 
+learning and 
+research. 
+• Offers 
+collections of 
+written language 
+data for 
+linguistic 
+research. 
+• Provides word 
+definitions and 
+translations. 
+• Identifies word 
+origins and 
+regional 
+language 
+variations. 
+• Improves 
+accessibility to 
+Southeast Asian 
+linguistic 
+resources for 
+learning and 
+research. 
+• Supports 
+linguistic research 
+through 
+comprehensive 
+dictionary and 
+corpus resources. 
+ 
+• Limited Kedah 
+specific coverage 
+includes Kedah 
+Malay vocabulary 
+but does not provide 
+a dedicated resource 
+covering the full 
+range of 
+contemporary 
+Kedah dialect 
+variations. 
+• Complex user 
+interface where it 
+contains numerous 
+search controls and 
+linguistic options 
+ 
+ 
+ PAGE 13 
+ 
+that may be 
+confusing for first-
+time users. 
+Glosbe • Language 
+learners 
+• Educators and 
+teachers. 
+• Translators 
+and language 
+professionals. 
+ 
+Providing 
+multilingual 
+dictionaries, 
+vocabulary 
+translations and 
+contextual 
+language 
+references through 
+a community-
+based translation 
+platform. 
+ 
+• Community 
+contributions 
+which allows 
+users to 
+contribute new 
+vocabulary and 
+translations. 
+• Dictionary 
+Editing: Allows 
+contributors to 
+add or correct 
+existing 
+translations. 
+ 
+• Encourages 
+community 
+participation and 
+provides easy 
+access to 
+multilingual 
+vocabulary and 
+translations. 
+• Translations may be 
+inaccurate because 
+community 
+contributions are 
+not necessarily 
+verified by language 
+experts. 
+ChatGPT • General users Providing AI-
+powered natural 
+• Provides AI -
+powered 
+• Provides quick 
+and easy access to 
+• Generates linguistic 
+information without 
+ 
+ 
+ PAGE 14 
+ 
+language 
+understanding, text 
+generation and 
+conversational 
+assistance. 
+responses to user 
+questions 
+through natural 
+language 
+conversations. 
+• Supports 
+multilingual 
+translation and 
+language-related 
+tasks. 
+• Explains word 
+meanings, 
+vocabulary and 
+language usage 
+in different 
+contexts. 
+ 
+information 
+through natural 
+language 
+conversations. 
+• Supports 
+multilingual 
+communication 
+and translation 
+across different 
+languages. 
+• Allows users to 
+ask follow-up 
+questions and 
+receive 
+personalized 
+explanations 
+based on their 
+needs. 
+guaranteed accuracy 
+or independent 
+expert verification 
+of Kedah Malay 
+dialect content. 
+ 
+ 
+ PAGE 15 
+ 
+Based on the comparison, existing platforms such as Pusat Rujukan Persuratan Melayu 
+(PRPM), Kamus Dewan Perdana, the SEAlang Library, Glosbe and ChatGPT provide valuable 
+resources for language documentation, translation  and learning. PRPM and Kamus Dewan 
+Perdana offer reliable linguistic references but have limited support for direct community 
+contributions and authentic dialect audio recordings. The SEAlang Library includes Kedah 
+Malay vocabulary but is primarily designe d for linguistic research  meanwhile Glosbe only 
+supports community translations that may require further verification. Meanwhile, ChatGPT 
+provides AI-assisted language processing but does not guarantee the accuracy of Kedah Malay 
+dialect information. Therefore, Loghat Kami is proposed as a web -based pla tform that 
+combines community contributions of vocabulary, contextual meanings, example sentences 
+and audio recordings with AI -assisted preliminary screening and final expert verification to 
+support the systematic documentation and preservation of the Kedah Malay dialect. 
+ 
+ 
+ 
+ PAGE 16 
+ 
+3.0 PROBLEM STATEMENT 
+ 
+ 
+The Kedah Malay dialect represents an important part of Malaysia's linguistic and cultural 
+heritage, containing distinctive vocabulary, pronunciation and regional variations (Asmah Haji 
+Omar, 2008). Although previous linguistic studies have examined differ ent aspects of the 
+Kedah Malay dialect including phonology and lexical variations, these findings are often 
+documented through individual research studies rather than continuously updated digital 
+platforms (Norfazila Ab. Hamid & Rahim Aman, 2014; Harishon  Radzi et al., 2018). As a 
+result, there remains a need for systematic digital documentation that supports the continuous 
+collection and preservation of Kedah Malay vocabulary, contextual meanings and authentic 
+audio pronunciation recordings. 
+ 
+Traditional dialect documentation commonly relies on fieldwork, interviews  and direct 
+observation which can require time, resources and researcher involvement. These methods may 
+limit the scale and frequency of data collection, making it challenging to capture diverse dialect 
+variations across local communities. Digital crowdsourcing offers an alternative approach by 
+allowing community me mbers to contribute linguistic information directly through an 
+accessible platform. Previous studies have demonstrated the potential of crowdsourcing to 
+support large-scale linguistic data collection through community participation (Ardila et al., 
+2020; Leemann et al., 2016). 
+ 
+However, crowdsourced linguistic data presents challenges in maintaining accuracy, 
+consistency and reliability. Contributions from different speakers may contain inconsistent 
+spelling, unclear audio pronunciation, incomplete contextual meanings  or inaccurate dialect 
+information. Without a systematic verification mechanism, these inconsistencies may reduce 
+the quality of collected dialect data and limit its usefulness for linguistic research. Therefore, a 
+structured validation process is necessary to ensure that community-contributed information is 
+properly reviewed before being accepted into a verified dialect corpus. 
+ 
+Furthermore, integrating Artificial Intelligence (AI) into dialect documentation presents 
+challenges when processing regional linguistic variations. Pretrained language models have 
+demonstrated the potential to support different Natural Language Processing  (NLP) tasks 
+ 
+ 
+ PAGE 17 
+ 
+through fine-tuning and few-shot learning (Devlin et al., 2019; Brown et al., 2020). However, 
+NLP resources are unevenly distributed across languages, particularly among underrepresented 
+language varieties (Joshi et al., 2020). Consequently, the effectiven ess of general -purpose 
+language models for processing Kedah Malay dialect data cannot be assumed without suitable 
+linguistic datasets and evaluation. This highlights the need for an integrated platform that 
+combines community crowdsourcing, AI -assisted preliminary screening  and final linguistic 
+expert verification to support the development of a reliable and systematically organized Kedah 
+Malay dialect corpus. 
+ 
+ 
+ 
+ 
+ 
+ 
+ PAGE 18 
+ 
+4.0 OBJECTIVES 
+ 
+General Objective:  
+To develop Loghat Kami, a web -based digital ecosystem that integrates multimodal 
+community crowdsourcing, AI-assisted data processing and expert validation to systematically 
+document and preserve the Kedah Malay dialect. 
+ 
+4.1 Specific Objectives: 
+ 
+i. To develop a multimodal crowdsourcing module for collecting Kedah 
+Malay dialect data in text and audio form. 
+ii. To implement an AI-based model for preliminary screening and 
+refinement of Kedah Malay dialect data. 
+iii. To develop an expert verification dashboard that enables language experts 
+to review, correct, approve or reject Kedah Malay dialect submissions. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ PAGE 19 
+ 
+5.0 PROJECT SCOPE 
+ 
+This project focuses on developing Loghat Kami, a web -based digital platform for 
+documenting and preserving the Kedah Malay dialect. The system is designed for local 
+community contributors, language experts and public users. It includes a multimodal 
+crowdsourcing module that enables users to submit di alect vocabulary, contextual meanings, 
+example sentences and authentic audio pronunciation recordings. 
+ 
+The system also integrates AI-assisted processing, using an adapted pretrained language model 
+to support preliminary screening and refinement of submitted dialect data by checking spelling, 
+pronunciation and language use. Submissions that are flagged as inconsistent or uncertain are 
+sent to the expert verification dashboard where language experts examine, correct, approve or 
+reject them before verified contributions are stored in a structured digital dialect corpus. The 
+final decision regarding the accuracy and authenticity of each contribution remains the 
+responsibility of language experts. 
+ 
+The project is limited to the Kedah Malay dialect and focuses on developing a functional 
+prototype with crowdsourcing, AI-assisted processing and expert verification features. The AI 
+component adapts an existing pretrained language model  which the system does not include 
+developing a general purpose Large Language Model (LLM) from scratch. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ PAGE 20 
+ 
+6.0 PROJECT SIGNIFICANCE 
+ 
+Loghat Kami plays an important role in supporting the documentation and preservation of the 
+Kedah Malay dialect as part of Malaysia's linguistic and cultural heritage. By integrating 
+community crowdsourcing, Artificial Intelligence (AI) -assisted data processing and language 
+expert verification, the project aims to provide a systematic and accessible approach to 
+collecting and preserving authentic dialect information. The platform encourages community 
+participation while supporting the development of a structured digital dialect corpus. 
+ 
+For language experts and researchers, Loghat Kami provides a centralized platform for 
+managing and verifying dialect contributions. AI -assisted preliminary screening can help 
+identify potential inconsistencies in submitted linguistic data, while expert verification 
+supports the accuracy and reliability o f documented dialect information. The verified corpus 
+may also serve as a valuable resource for future linguistic studies and language technology 
+development. 
+ 
+For local communities and public users, Loghat Kami offers an opportunity to actively 
+participate in preserving their linguistic heritage. Community members can contribute dialect 
+vocabulary, contextual meanings and authentic audio pronunciation recordings, while public 
+users can access verified information for learning and reference purposes. This approach 
+promotes greater awareness and appreciation of the Kedah Malay dialect, particularly among 
+younger generations. In terms of technology, Loghat Kami introduces an innovative workflow 
+that combines multimodal crowdsourcing with AI -assisted screening and expert verification  
+which can reduce the manual effort needed to review large amounts of community-contributed 
+dialect data. 
+ 
+Overall, Loghat Kami aims to contribute to the long -term preservation of the Kedah Malay 
+dialect by combining community participation, AI -assisted processing and expert validation. 
+The project supports linguistic research, improves accessibility to dialect resources  and 
+encourages the preservation of regional language variations for future generations. 
+ 
+ 
+ 
+ 
+ 
+ PAGE 21 
+ 
+7.0 METHODOLOGY  
+ 
+ 
+ 
+This project will adopt the Agile Software Development Methodology, which emphasizes 
+iterative development, collaboration and continuous feedback to ensure that the system meets 
+user requirements. Agile is suitable for Loghat  Kami because the crowdsourcing module, AI -
+assisted screening and expert verification dashboard require repeated cycles of development, 
+testing and refinement based on feedback from contributors and language experts. The six 
+Agile phases also correspond to the main activities of design and development research, namely 
+requirement analysis, system design, prototype development, testing, evaluation and 
+documentation. 
+ 
+The first phase, Requirement Gathering involves a literature review and an analysis of existing 
+language documentation platforms such as  Pusat Rujukan Persuratan Melayu (PRPM), Kamus 
+Dewan Perdana, the SEAlang Library, ChatGPT and Glosbe. This phase identifies the 
+functional and non -functional requirements, target users and essential system functionalities 
+needed for dialect data collection, AI-assisted screening and expert verification. 
+ 
+The second phase, System Design  focuses on designing the system architecture, database 
+structure and user interface. Entity Relationship Diagrams (ERD), Unified Modeling Language 
+(UML) diagrams and user interface wireframes will be developed to illustrate the relationships 
+and interactio ns between community contributors, dialect submissions, AI processing and 
+expert verification. This phase also involves planning the dataset structure and database 
+organization for storing Kedah Malay dialect data, audio recordings and verification status. 
+
+ 
+ 
+ PAGE 22 
+ 
+ 
+The third phase, Development consists of two main iterations. The first iteration develops the 
+crowdsourcing modul including user registration, authentication and the submission of Kedah 
+Malay vocabulary, meanings, example sentences and audio recordings. The second iteration 
+integrates AI-assisted screening which uses an adapted pretrained language model to check 
+spelling, pronunciation and language use and to provide suggestions for expert review. An 
+expert verification dashboard will also be developed in this iteration which allowing language 
+experts to review, edit, approve or reject submissions before verified entries are stored in the 
+structured digital dialect corpus. 
+ 
+The fourth phase, Testing, evaluates the functionality, accuracy and usability of Loghat Kami. 
+Unit and integration testing will be conducted to ensure that all modules function correctly. 
+The AI -assisted screening will be evaluated using suitable performance metrics based on 
+expert-reviewed dialect data. User Acceptance Testing (UAT) will be  conducted with 
+community contributors and language experts to assess usability and reliability, and the 
+feedback will be used to improve the system. 
+ 
+The fifth phase, Deployment, involves deploying the Loghat  Kami prototype in a controlled 
+testing environment to demonstrate its main functionalities. The system will be made accessible 
+to selected community participants and language experts for testing and evaluation. This phase 
+ensures that all modules operate together within the proposed dialect documentation workflow. 
+ 
+The final phase, Evaluation and Documentation, focuses on assessing whether Loghat Kami 
+achieves its project objectives and meets user requirements. Feedback from community 
+contributors and language experts will be analyzed to identify system strengths and areas for 
+improvement. The development process, AI evaluation results, testing outcomes and overall 
+findings will be documented in the final project report with recommendations for future work.
+ 
+ 
+ PAGE 23 
+ 
+8.0 GANTT CHART 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ PAGE 24 
+ 
+ 
+
+ 
+ 
+ PAGE 25 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ PAGE 26 
+ 
+ 
+9.0 REFERENCES 
+ 
+Androutsopoulos, J. (2014). Computer-mediated communication and linguistic landscapes. In    
+J. Holmes & K. Hazen (Eds.), Research methods in sociolinguistics: A practical guide (pp. 
+74–90). Wiley Blackwell. 
+Ardila, R., Branson, M., Davis, K., Henretty, M., Kohler, M., Meyer, J., Morais, R., 
+Saunders, L., Tyers, F. M., & Weber, G. (2020). Common Voice: A massively-multilingual 
+speech corpus. In Proceedings of the 12th Language Resources and Evaluation Conference 
+(pp. 4218–4222). European Language Resources Association. 
+Asmah Haji Omar. (2008). Susur galur bahasa Melayu (3rd ed.). Dewan Bahasa dan Pustaka. 
+Brown, T. B., Mann, B., Ryder, N., Subbiah, M., Kaplan, J., Dhariwal, P., Neelakantan, A., 
+Shyam, P., Sastry, G., Askell, A., Agarwal, S., Herbert-Voss, A., Krueger, G., Henighan, T., 
+Child, R., Ramesh, A., Ziegler, D. M., Wu, J., Winter, C., ... Amodei, D. (2020). Language 
+models are few-shot learners. Advances in Neural Information Processing Systems, 33, 1877–
+1901. 
+Devlin, J., Chang, M.-W., Lee, K., & Toutanova, K. (2019). BERT: Pre-training of deep 
+bidirectional transformers for language understanding. In Proceedings of NAACL-HLT 2019 
+(pp. 4171–4186). Association for Computational Linguistics. 
+https://doi.org/10.18653/v1/N19-1423 
+Harishon Radzi, Nor Hashimah Jalaluddin, Junaini Kasdan, Hayati Lateh, & Anati Hamidah 
+Arifin. (2018). Tahap pemahaman leksikal kata kerja dialek Melayu Kedah di Pulau Tuba 
+dan Satun. Jurnal Melayu, 17(1), 74–93. 
+Joshi, P., Santy, S., Budhiraja, A., Bali, K., & Choudhury, M. (2020). The state and fate of 
+linguistic diversity and inclusion in the NLP world. In Proceedings of the 58th Annual 
+Meeting of the Association for Computational Linguistics (pp. 6282–6293). Association for 
+Computational Linguistics. https://doi.org/10.18653/v1/2020.acl-main.560 
+ 
+ 
+ PAGE 27 
+ 
+Leemann, A., Kolly , M. J., Purves, R., Britain, D., & Glaser, E. (2016). Crowdsourcing 
+language change with smartphone applications. PLoS ONE , 11(1). 
+https://doi.org/10.1371/journal.pone.0143060 
+Norfazila Ab. Hamid, & Rahim Aman. (2014). Proses pemanjangan vokal dalam dialek Hulu 
+Sik Kedah: Satu penerapan teori fonologi generatif model non-linear. e-Bangi, 9(2), 195–205. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ PAGE 28 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+Farah Wahida Binti Ahmad Faizu  18/10/2026 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+Project Supervisor’s Signature & Stamp  Date 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Prepared by  
+Supervisor’s Approval  
+ 
+ 
+ PAGE 29 
+ 
+ 
+ Approve without modification   
+ Approve with modification   
+ Reject 
+ 
+Remark: 
+___________________________________________________________________ 
+___________________________________________________________________ 
+___________________________________________________________________ 
+___________________________________________________________________ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+Lecturer’s Signature & Stamp  Date 
+ 
+Lecturer’s Approval  

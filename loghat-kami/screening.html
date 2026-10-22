@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <script>try{document.documentElement.dataset.theme=JSON.parse(localStorage.getItem("lk-theme"))||"light"}catch{}</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Loghat Kami — documenting and preserving the Kedah Malay dialect.">
+    <title>Preliminary Screening · Loghat Kami</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/heritage.css">
+    <script src="js/data.js" defer></script>
+    <script src="js/app.js" defer></script>
+</head>
+
+<body><a class="skip" href="#main">Skip to content</a>
+    <header><a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 50 60"
+                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M25 55V9M25 55Q4 42 6 22M25 55Q46 42 44 22M25 55Q9 28 15 11M25 55Q41 28 35 11"
+                        stroke="currentColor" stroke-width="2" />
+                    <path
+                        d="M25 5Q13 17 25 27Q37 17 25 5M14 13Q4 24 18 32Q24 22 14 13M36 13Q46 24 32 32Q26 22 36 13M5 26Q1 39 18 43Q18 32 5 26M45 26Q49 39 32 43Q32 32 45 26M5 42Q9 54 23 55Q19 44 5 42M45 42Q41 54 27 55Q31 44 45 42"
+                        fill="currentColor" />
+                </svg></span><span>Loghat Kami<small>OUR WORDS, OUR LIVING HERITAGE</small></span></a>
+        <nav aria-label="Main navigation"><a href="index.html">Home</a><a href="corpus.html?q=" class="search-nav">Search</a><a href="corpus.html">Corpus</a><a href="contribute.html">Contribute</a><a href="review.html">Expert Review</a><a href="about.html">About Us</a></nav>
+        <div class="nav-actions"><button id="theme" class="icon-button" aria-label="Toggle colour theme">☀</button><button id="profile" class="outline">Demo access</button><a class="button gold small" href="contribute.html">+
+                Contribute</a></div>
+    </header>
+    <main id="main" class="page">
+        <div class="page-intro"><span class="eyebrow">STEP TWO</span>
+            <h1>Preliminary screening results</h1>
+            <p>Basic rule checks to support the expert review process.</p>
+        </div>
+        <div class="notice">ⓘ <span><strong>AI simulation for this prototype.</strong> No AI model is connected. These results do not verify linguistic accuracy or analyse pronunciation.</span></div>
+        <div id="screening-content" class="screen-grid"></div>
+    </main>
+    <footer><a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 50 60"
+                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M25 55V9M25 55Q4 42 6 22M25 55Q46 42 44 22M25 55Q9 28 15 11M25 55Q41 28 35 11"
+                        stroke="currentColor" stroke-width="2" />
+                    <path
+                        d="M25 5Q13 17 25 27Q37 17 25 5M14 13Q4 24 18 32Q24 22 14 13M36 13Q46 24 32 32Q26 22 36 13M5 26Q1 39 18 43Q18 32 5 26M45 26Q49 39 32 43Q32 32 45 26M5 42Q9 54 23 55Q19 44 5 42M45 42Q41 54 27 55Q31 44 45 42"
+                        fill="currentColor" />
+                </svg></span><span>Loghat Kami<small>LOCAL VOICES, SHARED HERITAGE</small></span></a>
+        <nav class="footer-nav" aria-label="Footer navigation"><a href="index.html">Home</a><a href="corpus.html">Corpus</a><a href="contribute.html">Contribute</a><a href="about.html">About</a></nav><span>FYP Prototype · 2026</span>
+    </footer>
+    <dialog id="detail"><button class="dialog-close icon-button" aria-label="Close">✕</button>
+        <div id="detail-content"></div>
+    </dialog>
+    <div id="toast" role="status"></div>
+</body>
+
+</html>
