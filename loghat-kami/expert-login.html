@@ -1,1 +1,33 @@
-<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><script>try{document.documentElement.dataset.theme=JSON.parse(localStorage.getItem('lk-theme'))||'light'}catch{}</script><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Expert access · Loghat Kami</title><link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/account.css"><script src="js/data.js" defer></script><script src="js/app.js" defer></script></head><body id="account-page"><a class="skip" href="#main">Skip to content</a><header><a class="brand" href="index.html"><span class="brand-icon">◈</span><span>Loghat Kami<small>OUR WORDS, OUR LIVING HERITAGE</small></span></a><nav><a href="index.html">Home</a><a href="corpus.html">Corpus</a><a href="about.html">About Us</a></nav><div class="nav-actions"><button id="theme" class="icon-button" aria-label="Toggle colour theme">☾</button><a class="outline" href="account.html">Member login</a></div></header><main id="main" class="page narrow-page"><div class="expert-login-card"><span class="eyebrow">RESTRICTED PROFESSIONAL ACCESS</span><h1>Language expert sign in</h1><p>Access is reserved for approved language professionals who review and verify community contributions.</p><p class="notice">Demo credentials: <strong>expert@loghatkami.my</strong> · <strong>expert123</strong></p><form id="login-form"><label>Professional email<input name="email" type="email" required placeholder="expert@organisation.my"></label><label>Password<input name="password" type="password" required placeholder="Your password"></label><button class="button gold" type="submit">Enter expert workspace →</button></form><p class="account-helper"><a href="index.html">← Return to public site</a></p></div></main><footer><span>Loghat Kami · Professional workspace</span><span>FYP Prototype · 2026</span></footer><div id="toast" role="status"></div></body></html>
+<!DOCTYPE html><html lang="en" data-theme="light"><!--
+GUIDE: FILE MAP: HTML controls structure/text; CSS controls appearance; js/app.js controls actions. Comments are invisible on the website.
+--><head><meta charset="UTF-8"><!--
+GUIDE: THEME ON LOAD: Applies the stored theme before the page is drawn. Keep this script in the head.
+--><script>try{document.documentElement.dataset.theme=JSON.parse(localStorage.getItem('lk-theme'))||'light'}catch{}</script><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Expert access · Loghat Kami</title><!--
+GUIDE: EDIT STYLE: css/style.css. Later stylesheets can override earlier ones.
+--><link rel="stylesheet" href="css/style.css"><!--
+GUIDE: EDIT STYLE: css/account.css. Later stylesheets can override earlier ones.
+--><link rel="stylesheet" href="css/account.css"><!--
+GUIDE: JAVASCRIPT: js/data.js. Example words and district names.
+--><script src="js/data.js" defer></script><!--
+GUIDE: JAVASCRIPT: js/app.js. Buttons, forms, search, cards and browser storage.
+--><script src="js/app.js" defer></script></head><body id="account-page"><a class="skip" href="#main">Skip to content</a><!--
+GUIDE: EDIT HEADER: Logo, navigation links and account/theme controls. Change link href to change the destination.
+--><header><a class="brand" href="index.html"><span class="brand-icon">◈</span><span>Loghat Kami<small>OUR WORDS, OUR LIVING HERITAGE</small></span></a><!--
+GUIDE: EDIT MENU: Change each link label for its displayed text; change href for its destination.
+--><nav><a href="index.html">Home</a><a href="corpus.html">Corpus</a><a href="about.html">About Us</a></nav><div class="nav-actions"><!--
+GUIDE: EDIT BUTTON: theme. Change visible text after this tag; keep id/data attributes for the click handler. type=submit sends its form.
+--><button id="theme" class="icon-button" aria-label="Toggle colour theme">☾</button><a class="outline" href="account.html">Member login</a></div></header><!--
+GUIDE: MAIN PAGE CONTENT: Edit the page sections below; keep existing IDs used by JavaScript.
+--><main id="main" class="page narrow-page"><div class="expert-login-card"><span class="eyebrow">RESTRICTED PROFESSIONAL ACCESS</span><!--
+GUIDE: EDIT TEXT: Main page title. Text after this tag is visible on the page.
+--><h1>Language expert sign in</h1><p>Access is reserved for approved language professionals who review and verify community contributions.</p><p class="notice">Demo credentials: <strong>expert@loghatkami.my</strong> · <strong>expert123</strong></p><!--
+GUIDE: EDIT FORM: login-form. Keep input name attributes and the form ID matched to js/app.js.
+--><form id="login-form"><label>Professional email<!--
+GUIDE: EDIT INPUT: email. type=email. placeholder is the hint; required makes it mandatory; maxlength/minlength limit text. Keep name/id matched to JS.
+--><input name="email" type="email" required placeholder="expert@organisation.my"></label><label>Password<!--
+GUIDE: EDIT INPUT: password. type=password. placeholder is the hint; required makes it mandatory; maxlength/minlength limit text. Keep name/id matched to JS.
+--><input name="password" type="password" required placeholder="Your password"></label><!--
+GUIDE: EDIT BUTTON: button gold. Change visible text after this tag; keep id/data attributes for the click handler. type=submit sends its form.
+--><button class="button gold" type="submit">Enter expert workspace →</button></form><p class="account-helper"><a href="index.html">← Return to public site</a></p></div></main><!--
+GUIDE: EDIT FOOTER: Bottom logo, links and project information.
+--><footer><span>Loghat Kami · Professional workspace</span><span>FYP Prototype · 2026</span></footer><div id="toast" role="status"></div></body></html>

@@ -1,20 +1,36 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 
-<head>
+<!--
+GUIDE: FILE MAP: HTML controls structure/text; CSS controls appearance; js/app.js controls actions. Comments are invisible on the website.
+--><head>
     <meta charset="UTF-8">
-    <script>try{document.documentElement.dataset.theme=JSON.parse(localStorage.getItem("lk-theme"))||"light"}catch{}</script>
+    <!--
+GUIDE: THEME ON LOAD: Applies the stored theme before the page is drawn. Keep this script in the head.
+--><script>try{document.documentElement.dataset.theme=JSON.parse(localStorage.getItem("lk-theme"))||"light"}catch{}</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Loghat Kami — documenting and preserving the Kedah Malay dialect.">
     <title>Expert Review · Loghat Kami</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/heritage.css">
-    <script src="js/data.js" defer></script>
-    <script src="js/app.js" defer></script>
+    <!--
+GUIDE: EDIT STYLE: css/style.css. Later stylesheets can override earlier ones.
+--><link rel="stylesheet" href="css/style.css">
+    <!--
+GUIDE: EDIT STYLE: css/heritage.css. Later stylesheets can override earlier ones.
+--><link rel="stylesheet" href="css/heritage.css">
+    <!--
+GUIDE: JAVASCRIPT: js/data.js. Example words and district names.
+--><script src="js/data.js" defer></script>
+    <!--
+GUIDE: JAVASCRIPT: js/app.js. Buttons, forms, search, cards and browser storage.
+--><script src="js/app.js" defer></script>
 </head>
 
 <body id="expert-page"><a class="skip" href="#main">Skip to content</a>
-    <header><a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 50 60"
+    <!--
+GUIDE: EDIT HEADER: Logo, navigation links and account/theme controls. Change link href to change the destination.
+--><header><a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true"><!--
+GUIDE: VECTOR ICON: paths draw this logo/icon. CSS currentColor sets its colour; preserve viewBox to keep proportions.
+--><svg viewBox="0 0 50 60"
                     fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M25 55V9M25 55Q4 42 6 22M25 55Q46 42 44 22M25 55Q9 28 15 11M25 55Q41 28 35 11"
                         stroke="currentColor" stroke-width="2" />
@@ -22,31 +38,57 @@
                         d="M25 5Q13 17 25 27Q37 17 25 5M14 13Q4 24 18 32Q24 22 14 13M36 13Q46 24 32 32Q26 22 36 13M5 26Q1 39 18 43Q18 32 5 26M45 26Q49 39 32 43Q32 32 45 26M5 42Q9 54 23 55Q19 44 5 42M45 42Q41 54 27 55Q31 44 45 42"
                         fill="currentColor" />
                 </svg></span><span>Loghat Kami<small>OUR WORDS, OUR LIVING HERITAGE</small></span></a>
-        <nav aria-label="Main navigation"><a href="index.html">Home</a><a href="corpus.html">Corpus</a><a href="contribute.html">Contribute</a><a href="about.html">About Us</a></nav>
-        <div class="nav-actions"><button id="theme" class="icon-button" aria-label="Toggle colour theme">☀</button><button id="profile" class="outline">Demo access</button><a class="button gold small" href="contribute.html">+
+        <!--
+GUIDE: EDIT MENU: Change each link label for its displayed text; change href for its destination.
+--><nav aria-label="Main navigation"><a href="index.html">Home</a><a href="corpus.html">Corpus</a><a href="contribute.html">Contribute</a><a href="about.html">About Us</a></nav>
+        <div class="nav-actions"><!--
+GUIDE: EDIT BUTTON: theme. Change visible text after this tag; keep id/data attributes for the click handler. type=submit sends its form.
+--><button id="theme" class="icon-button" aria-label="Toggle colour theme">☀</button><!--
+GUIDE: EDIT BUTTON: profile. Change visible text after this tag; keep id/data attributes for the click handler. type=submit sends its form.
+--><button id="profile" class="outline">Demo access</button><a class="button gold small" href="contribute.html">+
                 Contribute</a></div>
     </header>
-    <main id="main" class="page wide">
+    <!--
+GUIDE: MAIN PAGE CONTENT: Edit the page sections below; keep existing IDs used by JavaScript.
+--><main id="main" class="page wide">
         <div class="page-intro"><span class="eyebrow">LANGUAGE EXPERT WORKSPACE · DEMO</span>
-            <h1>Expert review dashboard</h1>
+            <!--
+GUIDE: EDIT TEXT: Main page title. Text after this tag is visible on the page.
+--><h1>Expert review dashboard</h1>
             <p>Review, edit and verify dialect contributions from the community.</p>
         </div>
         <div class="notice">ⓘ <span>This is a demo expert role without identity verification. Decisions are stored only in your browser.</span></div>
-        <section class="stats" id="review-stats"></section>
+        <!--
+GUIDE: EDIT SECTION: stats. Change headings/text below; find the same class in CSS for layout.
+--><section class="stats" id="review-stats"></section>
         <div class="review-grid">
-            <section class="panel">
-                <h2>Contributions</h2><label class="sr-only" for="review-filter">Contribution status</label><select id="review-filter">
+            <!--
+GUIDE: EDIT SECTION: panel. Change headings/text below; find the same class in CSS for layout.
+--><section class="panel">
+                <!--
+GUIDE: EDIT TEXT: Section heading. Text after this tag is visible on the page.
+--><h2>Contributions</h2><label class="sr-only" for="review-filter">Contribution status</label><!--
+GUIDE: EDIT DROPDOWN: review-filter. Options may be written below or added from LK_DISTRICTS in js/data.js. Keep option values matched to JS.
+--><select id="review-filter">
                     <option value="pending">Awaiting review</option>
                     <option value="revision">Revision requested</option>
                     <option value="approved">Approved</option>
                     <option value="rejected">Rejected</option>
                 </select>
-                <div id="review-list"></div>
+                <!--
+GUIDE: EDIT REVIEW LIST: JavaScript fills this container with contribution buttons.
+--><div id="review-list"></div>
             </section>
-            <section class="panel" id="review-detail"></section>
+            <!--
+GUIDE: EDIT REVIEW FORM: JavaScript inserts editable fields and decision buttons here. See the #review-list block in js/app.js.
+--><section class="panel" id="review-detail"></section>
         </div>
     </main>
-    <footer><a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 50 60"
+    <!--
+GUIDE: EDIT FOOTER: Bottom logo, links and project information.
+--><footer><a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true"><!--
+GUIDE: VECTOR ICON: paths draw this logo/icon. CSS currentColor sets its colour; preserve viewBox to keep proportions.
+--><svg viewBox="0 0 50 60"
                     fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M25 55V9M25 55Q4 42 6 22M25 55Q46 42 44 22M25 55Q9 28 15 11M25 55Q41 28 35 11"
                         stroke="currentColor" stroke-width="2" />
@@ -54,10 +96,18 @@
                         d="M25 5Q13 17 25 27Q37 17 25 5M14 13Q4 24 18 32Q24 22 14 13M36 13Q46 24 32 32Q26 22 36 13M5 26Q1 39 18 43Q18 32 5 26M45 26Q49 39 32 43Q32 32 45 26M5 42Q9 54 23 55Q19 44 5 42M45 42Q41 54 27 55Q31 44 45 42"
                         fill="currentColor" />
                 </svg></span><span>Loghat Kami<small>LOCAL VOICES, SHARED HERITAGE</small></span></a>
-        <nav class="footer-nav" aria-label="Footer navigation"><a href="index.html">Home</a><a href="corpus.html">Corpus</a><a href="contribute.html">Contribute</a><a href="about.html">About</a></nav><span>FYP Prototype · 2026</span>
+        <!--
+GUIDE: EDIT MENU: Change each link label for its displayed text; change href for its destination.
+--><nav class="footer-nav" aria-label="Footer navigation"><a href="index.html">Home</a><a href="corpus.html">Corpus</a><a href="contribute.html">Contribute</a><a href="about.html">About</a></nav><span>FYP Prototype · 2026</span>
     </footer>
-    <dialog id="detail"><button class="dialog-close icon-button" aria-label="Close">✕</button>
-        <div id="detail-content"></div>
+    <!--
+GUIDE: DETAIL MODAL: Opened/closed in js/app.js; its contents are generated by details().
+--><dialog id="detail"><!--
+GUIDE: EDIT BUTTON: dialog-close icon-button. Change visible text after this tag; keep id/data attributes for the click handler. type=submit sends its form.
+--><button class="dialog-close icon-button" aria-label="Close">✕</button>
+        <!--
+GUIDE: EDIT POPUP: details() in js/app.js supplies the word information shown inside this dialog.
+--><div id="detail-content"></div>
     </dialog>
     <div id="toast" role="status"></div>
 </body>

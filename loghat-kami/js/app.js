@@ -1,12 +1,19 @@
+// GUIDE: EDIT MAP - HTML = text/inputs; CSS = layout/colours; data.js = sample entries; this file = dynamic templates and actions. Keep HTML IDs and field names aligned with the selectors below.
+// GUIDE: SELECT ELEMENTS: $(selector) finds one HTML element; $$(selector) finds all matches. # means id; . means class.
 const $ = s => document.querySelector(s),
     $$ = s => [...document.querySelectorAll(s)];
+// GUIDE: ESCAPE TEXT: Keep this helper when inserting user input into HTML templates; it prevents typed text becoming markup.
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+// GUIDE: BROWSER STORAGE: Reads/writes JSON under lk- keys. Saved data persists on this browser; this is not a database.
 const storage = {get(k, d) { try { return JSON.parse(localStorage.getItem('lk-' + k)) ?? d } catch { return d } }, set(k, v) { try { localStorage.setItem('lk-' + k, JSON.stringify(v)); return true } catch { toast('Browser storage is full or unavailable. Your data was not saved.'); return false } } };
+// GUIDE: WORD DATA: Load saved entries first, otherwise use LK_SEED from data.js. Editing seed data does not replace existing saved entries.
 let entries = storage.get('entries', null);
 if (!Array.isArray(entries)) entries = structuredClone(LK_SEED);
+// GUIDE: SAVE ENTRIES: Writes the current words and review statuses back to localStorage.
 const persist = () => storage.set('entries', entries);
 let toastTimer;
 
+// GUIDE: EDIT NOTIFICATION: Toast text is passed as t. 4200 below is display duration in milliseconds.
 function toast(t) {
     $('#toast').textContent = t;
     $('#toast').style.display = 'block';
@@ -14,16 +21,20 @@ function toast(t) {
     toastTimer = setTimeout(() => $('#toast').style.display = 'none', 4200)
 }
 
+// GUIDE: EDIT THEME: Updates data-theme on the html tag. Actual colours are CSS variables in style.css/heritage.css.
 function theme(t) {
     document.documentElement.dataset.theme = t;
     $('#theme').textContent = t === 'dark' ? '☀' : '☾';
     $('#theme').setAttribute('aria-label', t === 'dark' ? 'Switch to light mode' : 'Switch to night mode');
     storage.set('theme', t)
 }
+// GUIDE: DEFAULT THEME: Change light to dark here for new visitors; saved browser choices take priority.
 theme(storage.get('theme', 'light'));
 $('#theme').onclick = () => theme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');
+// GUIDE: DETAIL POPUP: Hooks the HTML #detail dialog to close controls.
 const dialog = $('#detail');
 if(dialog){ $('.dialog-close').onclick = () => dialog.close(); dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close() }); }
+// GUIDE: ACCOUNT BUTTON: Builds the account popup, with different links for visitors, members and experts.
 if($('#profile')) $('#profile').onclick = () => {
     if (!$('#detail-content')) { location.href = 'account.html#settings'; return }
     const user = storage.get('user', null);
@@ -31,7 +42,9 @@ if($('#profile')) $('#profile').onclick = () => {
     dialog.showModal()
 };
 
+// GUIDE: EDIT AVATAR: HTML template for the profile image or fallback symbol. Keep esc() around user-provided values.
 function avatarMarkup(user) { return user?.avatar ? `<img class="profile-avatar" src="${esc(user.avatar)}" alt="">` : '<span class="profile-avatar profile-avatar-fallback" aria-hidden="true">♙</span>' }
+// GUIDE: EDIT PROFILE BUTTON: Updates the header label/avatar based on the saved demo user.
 function updateProfileButton() {
     const b = $('#profile'), user = storage.get('user', null);
     if (!b) return;
@@ -41,33 +54,55 @@ function updateProfileButton() {
 }
 updateProfileButton();
 
+// GUIDE: EDIT DETAIL CARD: Template literals (backticks) build popup content. ${...} inserts an entry value such as e.word or e.meaning.
 function details(e) { return `<h2>${esc(e.word)}</h2><span class="badge">${e.sample?'Sample data':'Community contribution'} · ${e.status==='approved'?'Verified (demo)':'Awaiting review'}</span><dl><dt>Meaning</dt><dd>${esc(e.meaning)}</dd><dt>Example sentence</dt><dd>${esc(e.example)}</dd><dt>District</dt><dd>${esc(e.district)}</dd><dt>Location</dt><dd>${esc(e.location||'Not specified')}</dd>${e.notes?`<dt>Notes</dt><dd>${esc(e.notes)}</dd>`:''}</dl>${e.audio?`<audio controls src="${esc(e.audio)}"></audio>`:'<p class="muted">No original pronunciation recording is available yet.</p>'}`}
+// GUIDE: EDIT CORPUS CARD: Change the HTML template here for every corpus card. Edit card appearance in corpus.css and heritage.css.
 function card(e){return `<article class="word-card"><div class="word-body"><div class="word-title"><h3 lang="ms">${esc(e.word)}</h3><button class="audio-button" data-play="${esc(e.id)}" aria-label="Listen to ${esc(e.word)}">▷</button></div><p lang="ms" class="word-meaning">${esc(e.meaning)}</p><div class="word-bubble"><span class="bubble-label">IN A SENTENCE</span><q lang="ms">${esc(e.example)}</q></div><div class="word-meta"><span class="district-chip">${esc(e.district)}</span><button data-detail="${esc(e.id)}">View entry <span aria-hidden="true">→</span></button></div></div></article>`}
 
+// GUIDE: CARD ACTIONS: data-detail opens word details; data-play plays recorded audio or synthetic Malay speech.
 document.addEventListener('click',e=>{const b=e.target.closest('[data-detail],[data-play]');if(!b)return;const en=entries.find(x=>x.id===(b.dataset.detail||b.dataset.play));if(!en)return;if(b.dataset.detail){$('#detail-content').innerHTML=details(en);dialog.showModal()}else if(en.audio){new Audio(en.audio).play().catch(()=>toast('Audio could not be played.'))}else{toast('No original recording is available. Synthetic Malay speech will play if supported.');if('speechSynthesis'in window){speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(en.word);u.lang='ms-MY';u.rate=.8;speechSynthesis.speak(u)}}});
+// GUIDE: EDIT REVIEW STAT CARD: Shared HTML for expert-review counts. CSS .stat controls appearance.
 function stat(icon,n,label){return `<div class="stat"><span class="stat-icon">${icon}</span><div><strong>${n}</strong><small>${label}</small></div></div>`}
+// GUIDE: EDIT HOMEPAGE CARD: Template for the featured word, meaning, example and Explore word button. Styles: home-lower.css.
 function featuredCard(e,index){return `<article class="word-card discovery-card"><div class="discovery-top"><span class="discovery-label">KEDAH DIALECT <span aria-hidden="true">· ${String(index+1).padStart(2,'0')}</span></span><button class="audio-button" data-play="${esc(e.id)}" aria-label="Listen to ${esc(e.word)}">▷</button></div><h3 lang="ms">${esc(e.word)}</h3><p class="discovery-meaning" lang="ms">${esc(e.meaning)}</p><div class="discovery-quote"><span class="quote-label">IN EVERYDAY CONVERSATION</span><q lang="ms">${esc(e.example)}</q></div><div class="discovery-footer"><span>⌖ ${esc(e.district)}</span><button data-detail="${esc(e.id)}">Explore word <span aria-hidden="true">↗</span></button></div></article>`}
+// GUIDE: HOMEPAGE ONLY: Populates statistics and featured cards. homeStat() below changes stat labels/descriptions; Math.min(4,...) sets the maximum cards rendered.
 if($('#home-stats')){
  const approved=entries.filter(e=>e.status==='approved');
  const homeStat=(icon,n,title,note)=>`<div class="stat"><span class="stat-icon">${icon}</span><div><strong>${n}</strong><span class="stat-title">${title}</span><small>${note}</small></div></div>`;
  $('#home-stats').innerHTML=homeStat('▤',approved.length,'Corpus entries','Words and expressions in this demo.')+homeStat('♧',new Set(entries.map(e=>e.district)).size,'Districts represented','Community voices from across Kedah.')+homeStat('✓',entries.filter(e=>e.status==='pending').length,'Awaiting expert review','Contributions ready for a closer look.')+homeStat('⌖',12,'Districts in Kedah','A shared heritage across the state.');
+// GUIDE: CAROUSEL: featureOffset selects the first word. Keep the card-count and arrow-disabled limits consistent when changing 4.
  let featureOffset=0;const showFeatured=()=>{$('#featured').innerHTML=Array.from({length:Math.min(4,approved.length)},(_,i)=>featuredCard(approved[(featureOffset+i)%approved.length],(featureOffset+i)%approved.length)).join('');$('#featured-previous').disabled=approved.length<=4;$('#featured-next').disabled=approved.length<=4};
+// GUIDE: CAROUSEL ARROWS: Previous/next change the first featured word, then redraw the cards.
  $('#featured-previous').onclick=()=>{featureOffset=(featureOffset-1+approved.length)%approved.length;showFeatured()};$('#featured-next').onclick=()=>{featureOffset=(featureOffset+1)%approved.length;showFeatured()};showFeatured();
 }
+// GUIDE: DISTRICT OPTIONS: Adds options to contribution/corpus selects. Edit district names in data.js.
 LK_DISTRICTS.forEach(d=>$$('select[name="district"],#district-filter').forEach(s=>s.insertAdjacentHTML('beforeend',`<option>${esc(d)}</option>`)));
+// GUIDE: CONTRIBUTION STATE: Holds uploaded audio and microphone recording state for the contribution page.
 const form=$('#contribution');let audioData=null,recorder=null,stream=null,recordChunks=[],recordTimer;
+// GUIDE: AUDIO PREVIEW: Shows the audio player and remembers its data URL for the submission.
 function previewAudio(data){audioData=data;$('#audio-preview').src=data;$('#audio-preview').hidden=false;$('#audio-status').textContent='Audio is ready to submit.'}
+// GUIDE: EDIT AUDIO LIMITS: 5*1024*1024 means 5 MB. Accepted file types are checked here and in the HTML file input.
 function loadAudio(file){if(!file)return;if(file.size>5*1024*1024){toast('Audio exceeds 5 MB. Choose a smaller file.');return}if(!file.type.startsWith('audio/')&&!/\.(mp3|wav|ogg|m4a|webm)$/i.test(file.name||'')){toast('Please choose a valid audio file.');return}const r=new FileReader();r.onload=()=>previewAudio(r.result);r.readAsDataURL(file)}
+// GUIDE: RESTORE DRAFT: Runs only on the contribution page; restores saved field values and optional audio.
 if(form){const draft=storage.get('draft',null);if(draft){for(const[k,v]of Object.entries(draft)){if(form.elements[k]&&k!=='audio')form.elements[k].value=v}if(draft.audio)previewAudio(draft.audio)}
+// GUIDE: FILE INPUT HANDLER: Runs when the contributor selects an audio file.
  form.elements.audio.onchange=()=>loadAudio(form.elements.audio.files[0]);
+// GUIDE: SAVE DRAFT BUTTON: Reads the current form fields and saves a browser-local draft.
  $('#save-draft').onclick=()=>{const d=Object.fromEntries(new FormData(form));delete d.audio;d.audio=audioData;if(storage.set('draft',d))toast('Draft saved in this browser.')};
+// GUIDE: EDIT MICROPHONE RECORDING: Starts/stops MediaRecorder. 60000 is the automatic stop time in milliseconds; update the visible time message too.
  $('#record').onclick=async()=>{if(recorder?.state==='recording'){recorder.stop();return}if(!navigator.mediaDevices?.getUserMedia||!window.MediaRecorder){toast('Recording is not supported. Upload an audio file instead.');return}try{stream=await navigator.mediaDevices.getUserMedia({audio:true});recordChunks=[];recorder=new MediaRecorder(stream);recorder.ondataavailable=e=>recordChunks.push(e.data);recorder.onstop=()=>{clearTimeout(recordTimer);stream.getTracks().forEach(t=>t.stop());loadAudio(new Blob(recordChunks,{type:recorder.mimeType}));$('#record').textContent='● Record again'};recorder.start();$('#record').textContent='■ Stop recording';$('#audio-status').textContent='Recording… maximum 60 seconds.';recordTimer=setTimeout(()=>{if(recorder.state==='recording')recorder.stop()},60000)}catch{toast('The microphone is unavailable or permission was denied. You can upload audio instead.')}};
+// GUIDE: SUBMIT CONTRIBUTION: Trims required fields, creates a pending entry, saves it, then opens screening.html. Keep HTML input names matched here.
  form.onsubmit=e=>{e.preventDefault();if(recorder?.state==='recording'){toast('Stop recording before submitting.');return}const d=Object.fromEntries(new FormData(form));delete d.audio;for(const k of ['word','meaning','example']){d[k]=d[k].trim();if(!d[k]){toast('Please complete all required fields.');form.elements[k].focus();return}}d.id='entry-'+crypto.randomUUID();d.status='pending';d.createdAt=Date.now();d.audio=audioData;entries.push(d);if(!persist()){entries.pop();return}storage.set('current',d.id);storage.set('draft',null);location.href='screening.html'};
+// GUIDE: MICROPHONE CLEANUP: Stop microphone tracks when leaving the page.
  window.addEventListener('pagehide',()=>stream?.getTracks().forEach(t=>t.stop()));}
+// GUIDE: EDIT SCREENING PANEL: Builds the preliminary rule-check results. Checks completeness, exact duplicates and word presence in the example; no AI model is called.
 if($('#screening-content')){const en=entries.find(e=>e.id===storage.get('current',''));if(!en){$('#screening-content').innerHTML='<div class="empty">There is no contribution to screen yet.<p><a class="button gold" href="contribute.html">Contribute a word</a></p></div>'}else{const similar=entries.filter(e=>e.id!==en.id&&e.word.toLowerCase()===en.word.toLowerCase());const inSentence=en.example.toLowerCase().includes(en.word.toLowerCase());$('#screening-content').innerHTML=`<section class="panel"><span class="eyebrow">CONTRIBUTION DETAILS</span>${details(en)}</section><section class="panel"><span class="eyebrow">RULE CHECKS · NOT AN AI SCORE</span><h2>${similar.length?'Potential duplicate entry':'Ready for expert review'}</h2><div class="score">${[!!en.word,!!en.meaning,!!en.example,!!en.district].filter(Boolean).length}/4</div><p class="muted" style="text-align:center">Required fields completed</p><ul class="checklist"><li>Word, meaning, sentence and district received.</li><li>${inSentence?'The word appears in the example sentence.':'An expert should check how the word relates to the example sentence.'}</li><li>${similar.length?'This word already exists in the corpus; an expert should check for meaning variations.':'No exact word match was found in the demo corpus.'}</li><li>${en.audio?'Audio attached; quality and pronunciation have not been assessed.':'No audio attached.'}</li></ul><div class="notice">A language expert makes the final decision. Your contribution has been added to the review queue.</div><a class="button gold" href="review.html">View expert review ↗</a></section>`}}
+// GUIDE: EDIT CORPUS FUNCTIONS: Search/filter/sort, render cards or table, paginate and wire controls. The 8 in pagination calculations is the page size; update all matching page-size uses together.
 if($('#corpus-results')){let page=1,table=false;const search=$('#corpus-search'),filter=$('#district-filter'),sort=$('#sort'),corpusForm=$('#corpus-form');search.value=new URLSearchParams(location.search).get('q')||'';function render(){let a=entries.filter(e=>e.status==='approved').filter(e=>(!filter.value||e.district===filter.value)&&[e.word,e.meaning,e.example].join(' ').toLowerCase().includes(search.value.trim().toLowerCase()));a.sort(sort.value==='az'?(a,b)=>a.word.localeCompare(b.word,'ms'):(a,b)=>(b.createdAt||0)-(a.createdAt||0));const pages=Math.ceil(a.length/8);page=Math.min(page,Math.max(pages,1));const slice=a.slice((page-1)*8,page*8);$('#result-count').textContent=`${a.length} words found · Page ${page} of ${Math.max(pages,1)}`;$('#corpus-results').innerHTML=!a.length?'<div class="empty">No words found. Try another search term or district.</div>':table?`<div class="table-wrap"><table><thead><tr><th>Word</th><th>Meaning</th><th>District</th><th>Audio</th><th>Details</th></tr></thead><tbody>${slice.map(e=>`<tr><td><strong>${esc(e.word)}</strong></td><td>${esc(e.meaning)}</td><td>${esc(e.district)}</td><td><button class="audio-button" data-play="${esc(e.id)}" aria-label="Listen to ${esc(e.word)}">▷</button></td><td><button class="outline" data-detail="${esc(e.id)}">View</button></td></tr>`).join('')}</tbody></table></div>`:slice.map(card).join('');$('#pagination').innerHTML=Array.from({length:pages},(_,i)=>`<button ${i+1===page?'class="active" aria-current="page"':''} data-page="${i+1}" aria-label="Page ${i+1}">${i+1}</button>`).join('')};[search,filter,sort].forEach(el=>el.addEventListener(el===search?'input':'change',()=>{page=1;render()}));if(corpusForm)corpusForm.onsubmit=e=>{e.preventDefault();page=1;render()};$('#view-toggle').onclick=()=>{table=!table;$('#view-toggle').textContent=table?'Card view':'Table view';render()};$('#pagination').onclick=e=>{if(e.target.dataset.page){page=Number(e.target.dataset.page);render()}};render()}
+// GUIDE: EDIT REVIEW FUNCTIONS: Builds queue, editable review inputs and decision buttons. approved/revision/rejected are internal status values. Save decisions through persist().
 if($('#review-list')){let selected=null;const rf=$('#review-filter');function renderReview(){const list=entries.filter(e=>e.status===rf.value);if(!list.some(e=>e.id===selected))selected=list[0]?.id;$('#review-stats').innerHTML=stat('◷',entries.filter(e=>e.status==='pending').length,'Awaiting review')+stat('✓',entries.filter(e=>e.status==='approved').length,'Demo corpus entries')+stat('↺',entries.filter(e=>e.status==='revision').length,'Revision requested')+stat('×',entries.filter(e=>e.status==='rejected').length,'Rejected');$('#review-list').innerHTML=list.length?list.map(e=>`<button class="review-item ${e.id===selected?'selected':''}" data-select="${esc(e.id)}"><strong>${esc(e.word)}</strong><small>${esc(e.district)} · ${e.sample?'Sample data':'Community'}</small></button>`).join(''):'<p class="muted">No contributions in this category.</p>';const en=list.find(e=>e.id===selected);$('#review-detail').innerHTML=en?`<span class="eyebrow">REVIEW DETAILS</span>${details(en)}<form id="review-form"><div class="review-edit"><label>Word *<input name="word" required maxlength="80" value="${esc(en.word)}"></label><label>District<select name="district">${LK_DISTRICTS.map(d=>`<option ${d===en.district?'selected':''}>${esc(d)}</option>`).join('')}</select></label><label class="span">Meaning *<textarea name="meaning" required maxlength="1000">${esc(en.meaning)}</textarea></label><label class="span">Example sentence *<textarea name="example" required maxlength="1000">${esc(en.example)}</textarea></label><label class="span">Expert comments (required for revision / rejection)<textarea name="feedback" maxlength="1500">${esc(en.feedback||'')}</textarea></label></div><div class="review-actions"><button type="submit" name="decision" value="approved" class="button gold">✓ Approve</button><button type="submit" name="decision" value="revision" class="outline">Request revision</button><button type="submit" name="decision" value="rejected" class="outline danger">Reject</button></div></form>`:'<div class="empty">Select a contribution to start reviewing.</div>';if(en)$('#review-form').onsubmit=e=>{e.preventDefault();const d=Object.fromEntries(new FormData(e.target));const decision=e.submitter.value;if(Object.values(d).slice(0,4).some(x=>!x.trim())){toast('Complete the word details.');return}if(decision!=='approved'&&!d.feedback.trim()){toast('Please provide comments for revision or rejection.');e.target.elements.feedback.focus();return}const backup={...en};Object.assign(en,d,{status:decision});if(!persist()){Object.assign(en,backup);return}toast(decision==='approved'?'Approved and added to the demo corpus.':'Review decision saved.');renderReview()}};rf.onchange=()=>{selected=null;renderReview()};$('#review-list').onclick=e=>{const b=e.target.closest('[data-select]');if(b){selected=b.dataset.select;renderReview()}};renderReview()}
 
+// GUIDE: EDIT ICONS: Named SVG path strings for book/people/shield/pin/plus/brain/person. These are drawing instructions, not visible text.
 const heritageIcons={
  book:'<path d="M3 5q5-2 9 1q4-3 9-1v15q-5-2-9 1q-4-3-9-1z"/><path d="M12 6v15M6 9h3M6 12h3M15 9h3M15 12h3"/>',
  people:'<circle cx="12" cy="6" r="3"/><circle cx="4" cy="8" r="2"/><circle cx="20" cy="8" r="2"/><path d="M7 21v-5a5 5 0 0 1 10 0v5zM3 20H1v-6a3 3 0 0 1 5-2M21 20h2v-6a3 3 0 0 0-5-2"/>',
@@ -76,34 +111,49 @@ const heritageIcons={
  plus:'<path d="M12 3v18M3 12h18"/>',
  brain:'<path d="M12 5c-3-5-8-1-7 2c-5 1-4 7 0 8c-2 5 4 8 7 4c3 4 9 1 7-4c4-1 5-7 0-8c1-3-4-7-7-2zM12 5v14M7 8l2 2M17 8l-2 2M5 15l4-1M19 15l-4-1"/>',
  person:'<circle cx="12" cy="6" r="4"/><path d="M5 22v-4a7 7 0 0 1 14 0v4z"/>'};
+// GUIDE: DRAW ICON: Wrap a path from heritageIcons in a scalable SVG. Change stroke-width to adjust line thickness.
 function drawHeritageIcon(el,key){if(el)el.innerHTML=`<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${heritageIcons[key]}</svg>`}
+// GUIDE: ICON ASSIGNMENTS: Icon names below match statistics, journey cards and workflow items in their displayed order.
 $$('#home-stats .stat-icon').forEach((el,i)=>drawHeritageIcon(el,['book','people','shield','pin'][i]));
 $$('.journey-icon').forEach((el,i)=>drawHeritageIcon(el,['book','plus','shield','people'][i]));
 $$('.how-icon').forEach((el,i)=>drawHeritageIcon(el,['people','brain','person'][i]));
 
+// GUIDE: ACCOUNT PAGE: Handles tabs, login, registration, profile settings and logout. Browser-only demo logic; these checks are not server authentication.
 if($('#account-login')){
  const authTabs=$$('.account-tab'), authPanels=$$('.account-panel'), authMessage=$('#account-message');
+// GUIDE: ACCOUNT TABS: data-tab on each HTML button must match its account-login/register/settings panel ID.
  const showTab=name=>{authTabs.forEach(b=>b.classList.toggle('active',b.dataset.tab===name));authPanels.forEach(p=>p.hidden=p.id!==`account-${name}`);if(location.hash!==`#${name}`)history.replaceState(null,'',`#${name}`)};
  authTabs.forEach(b=>b.onclick=()=>showTab(b.dataset.tab));
  showTab(location.hash.slice(1)==='register'?'register':location.hash.slice(1)==='settings'?'settings':'login');
  const current=()=>storage.get('user',null);
  const showMessage=t=>{if(authMessage){authMessage.textContent=t;authMessage.hidden=false}};
+// GUIDE: LOAD PROFILE INPUTS: Fills username/email/phone/avatar from the saved browser user.
  const fillProfile=()=>{const u=current();if(!u)return;$('#settings-avatar').innerHTML=avatarMarkup(u);$('#settings-username').value=u.username||'';$('#settings-email').value=u.email||'';$('#settings-phone').value=u.phone||'';$('#settings-role').textContent=u.role==='expert'?'Verified language expert':'Community contributor'};
  fillProfile();
+// GUIDE: LOGIN HANDLER: Reads email/password by input name and checks the browser demo credentials. Change destinations/messages here.
  $('#login-form').onsubmit=e=>{e.preventDefault();const fd=new FormData(e.target), email=String(fd.get('email')).trim(), password=String(fd.get('password'));const saved=storage.get('user',null);if(saved?.email===email&&saved?.password===password){storage.set('user',{...saved,loggedIn:true});updateProfileButton();showMessage(`Welcome back, ${saved.username}.`);fillProfile();showTab('settings')}else if(email==='expert@loghatkami.my'&&password==='expert123'){const expert={username:'Language Expert',email,password,phone:'',role:'expert',loggedIn:true};storage.set('user',expert);updateProfileButton();location.href='expert.html'}else showMessage('The email or password does not match this browser demo.')} ;
+// GUIDE: REGISTRATION HANDLER: Validates passwords and fields, reads an optional avatar (2 MB limit), and stores the demo profile.
  $('#register-form').onsubmit=e=>{e.preventDefault();const fd=new FormData(e.target), password=String(fd.get('password')), confirm=String(fd.get('confirm'));if(password.length<6)return showMessage('Use a password with at least 6 characters.');if(password!==confirm)return showMessage('The passwords do not match.');const file=e.target.elements.avatar.files[0];const save=avatar=>{const user={username:String(fd.get('username')).trim(),email:String(fd.get('email')).trim(),phone:String(fd.get('phone')).trim(),password,avatar:avatar||'',role:'contributor',loggedIn:true};if(!user.username||!user.email||!user.phone)return showMessage('Complete your username, email and phone number.');storage.set('user',user);updateProfileButton();showMessage('Account created in this browser.');e.target.reset();fillProfile();showTab('settings')};if(file){if(file.size>2*1024*1024)return showMessage('Profile pictures must be smaller than 2 MB.');const reader=new FileReader();reader.onload=()=>save(reader.result);reader.readAsDataURL(file)}else save('')};
+// GUIDE: PROFILE SAVE HANDLER: Reads settings form fields and optionally replaces the avatar.
  $('#settings-form').onsubmit=e=>{e.preventDefault();const u=current();if(!u)return showMessage('Log in first.');const fd=new FormData(e.target), file=e.target.elements.avatar.files[0], save=avatar=>{const next={...u,username:String(fd.get('username')).trim(),email:String(fd.get('email')).trim(),phone:String(fd.get('phone')).trim(),avatar:avatar===undefined?u.avatar:avatar};storage.set('user',next);updateProfileButton();fillProfile();showMessage('Your profile settings were saved.')};if(file){const reader=new FileReader();reader.onload=()=>save(reader.result);reader.readAsDataURL(file)}else save(undefined)};
+// GUIDE: LOGOUT HANDLER: Removes the saved demo user and returns to the login tab.
  $('#logout').onclick=()=>{const u=current();if(u)storage.set('user',{...u,loggedIn:false});localStorage.removeItem('lk-user');updateProfileButton();showTab('login');showMessage('You have been logged out of this browser.')};
 }
 
+// GUIDE: EXPERT SIGN-IN PAGE: Separate demo expert login route. Keep credentials consistent with the demo credentials displayed in expert-login.html.
 if($('#account-page')&&!$('#account-login')){
+// GUIDE: LOGIN HANDLER: Reads email/password by input name and checks the browser demo credentials. Change destinations/messages here.
  $('#login-form').onsubmit=e=>{e.preventDefault();const fd=new FormData(e.target),email=String(fd.get('email')).trim(),password=String(fd.get('password'));if(email==='expert@loghatkami.my'&&password==='expert123'){storage.set('user',{username:'Language Expert',email,password,phone:'',role:'expert',loggedIn:true});location.href='expert.html'}else toast('Use the approved professional credentials for this demo.')};
 }
 
+// GUIDE: EXPERT PAGE GUARD: Checks the saved demo role and displays an access message for other visitors. A real backend must enforce production permissions.
 if($('#expert-page')){
  const u=storage.get('user',null);if(!u||u.role!=='expert'){document.body.innerHTML=`<main class="access-denied page"><span class="eyebrow">RESTRICTED WORKSPACE</span><h1>Professional access required</h1><p>This dashboard is available only to verified language experts.</p><a class="button gold" href="expert-login.html">Go to expert login</a></main>`}else{if($('#expert-name'))$('#expert-name').textContent=u.username||'Language expert';if($('#expert-avatar'))$('#expert-avatar').innerHTML=avatarMarkup(u);}
 }
 
+// GUIDE: EXPERT DASHBOARD CONTENT: Populates metrics, latest approved words and the pending queue from entries. slice() limits the number of preview items.
 if($('#expert-dashboard')){const u=storage.get('user',null),approved=entries.filter(e=>e.status==='approved'),pending=entries.filter(e=>e.status==='pending');if(u?.role==='expert'){if($('#dashboard-expert-name'))$('#dashboard-expert-name').textContent=u.username||'Expert';$('#metric-pending').textContent=pending.length;$('#metric-approved').textContent=approved.length;$('#metric-districts').textContent=new Set(entries.map(e=>e.district)).size;$('#sidebar-pending').textContent=pending.length;$('#queue-count').textContent=`${pending.length} pending`;$('#expert-words').innerHTML=approved.slice(-4).reverse().map(e=>`<article><span class="word-initial">${esc(e.word.charAt(0).toUpperCase())}</span><div><strong>${esc(e.word)}</strong><small>${esc(e.district)} · Verified entry</small></div><span class="badge">Approved</span></article>`).join('');$('#expert-queue').innerHTML=pending.slice(0,3).map(e=>`<div class="queue-item"><div><strong>${esc(e.word)}</strong><small>${esc(e.district)} · ${e.sample?'Sample data':'Community contribution'}</small></div><a href="expert-review.html">Review →</a></div>`).join('')||'<p class="muted">Your review queue is clear.</p>'}}
+// GUIDE: EXPERT DASHBOARD CONTENT: Populates metrics, latest approved words and the pending queue from entries. slice() limits the number of preview items.
 if($('#expert-dashboard')){const u=storage.get('user',null),approved=entries.filter(e=>e.status==='approved'),pending=entries.filter(e=>e.status==='pending');if(u?.role==='expert'){if($('#dashboard-expert-name'))$('#dashboard-expert-name').textContent=u.username||'Expert';$('#metric-pending').textContent=pending.length;$('#metric-approved').textContent=approved.length;$('#metric-districts').textContent=new Set(entries.map(e=>e.district)).size;$('#sidebar-pending').textContent=pending.length;$('#queue-count').textContent=`${pending.length} pending`;$('#expert-words').innerHTML=approved.slice(-4).reverse().map(e=>`<article><span class="word-initial">${esc(e.word.charAt(0).toUpperCase())}</span><div><strong>${esc(e.word)}</strong><small>${esc(e.district)} · Verified entry</small></div><span class="badge">Approved</span></article>`).join('');$('#expert-queue').innerHTML=pending.slice(0,3).map(e=>`<div class="queue-item"><div><strong>${esc(e.word)}</strong><small>${esc(e.district)} · ${e.sample?'Sample data':'Community contribution'}</small></div><a href="expert-review.html">Review →</a></div>`).join('')||'<p class="muted">Your review queue is clear.</p>'}}
+// GUIDE: REVIEW REASON CHECK: Capture-phase submit listener requires a non-empty expert reason before a review decision.
 document.addEventListener('submit',e=>{if(e.target.id==='review-form'){const reason=e.target.elements.feedback;if(!reason?.value.trim()){e.preventDefault();e.stopImmediatePropagation();toast('Please provide a reason for every decision.');reason?.focus()}}},true);

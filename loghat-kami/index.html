@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 
-<head>
+<!--
+GUIDE: FILE MAP: HTML controls structure/text; CSS controls appearance; js/app.js controls actions. Comments are invisible on the website.
+--><head>
     <meta charset="UTF-8">
-    <script>
+    <!--
+GUIDE: THEME ON LOAD: Applies the stored theme before the page is drawn. Keep this script in the head.
+--><script>
         try {
             document.documentElement.dataset.theme = JSON.parse(localStorage.getItem("lk-theme")) || "light"
         } catch {}
@@ -11,15 +15,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Loghat Kami — documenting and preserving the Kedah Malay dialect.">
     <title>Home · Loghat Kami</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/heritage.css">
-    <link rel="stylesheet" href="css/home-lower.css">
-    <script src="js/data.js" defer></script>
-    <script src="js/app.js" defer></script>
+    <!--
+GUIDE: EDIT STYLE: css/style.css. Later stylesheets can override earlier ones.
+--><link rel="stylesheet" href="css/style.css">
+    <!--
+GUIDE: EDIT STYLE: css/heritage.css. Later stylesheets can override earlier ones.
+--><link rel="stylesheet" href="css/heritage.css">
+    <!--
+GUIDE: EDIT STYLE: css/home-lower.css. Later stylesheets can override earlier ones.
+--><link rel="stylesheet" href="css/home-lower.css">
+    <!--
+GUIDE: JAVASCRIPT: js/data.js. Example words and district names.
+--><script src="js/data.js" defer></script>
+    <!--
+GUIDE: JAVASCRIPT: js/app.js. Buttons, forms, search, cards and browser storage.
+--><script src="js/app.js" defer></script>
 </head>
 
 <body><a class="skip" href="#main">Skip to content</a>
-    <header><a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 50 60"
+    <!--
+GUIDE: EDIT HEADER: Logo, navigation links and account/theme controls. Change link href to change the destination.
+--><header><a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true"><!--
+GUIDE: VECTOR ICON: paths draw this logo/icon. CSS currentColor sets its colour; preserve viewBox to keep proportions.
+--><svg viewBox="0 0 50 60"
                     fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M25 55V9M25 55Q4 42 6 22M25 55Q46 42 44 22M25 55Q9 28 15 11M25 55Q41 28 35 11"
                         stroke="currentColor" stroke-width="2" />
@@ -27,52 +45,106 @@
                         d="M25 5Q13 17 25 27Q37 17 25 5M14 13Q4 24 18 32Q24 22 14 13M36 13Q46 24 32 32Q26 22 36 13M5 26Q1 39 18 43Q18 32 5 26M45 26Q49 39 32 43Q32 32 45 26M5 42Q9 54 23 55Q19 44 5 42M45 42Q41 54 27 55Q31 44 45 42"
                         fill="currentColor" />
                 </svg></span><span>Loghat Kami<small>OUR WORDS, OUR LIVING HERITAGE</small></span></a>
-        <nav aria-label="Main navigation"><a href="index.html" aria-current="page">Home</a><a href="corpus.html">Corpus</a><a href="contribute.html">Contribute</a><a href="about.html">About Us</a></nav>
-        <div class="nav-actions"><button id="theme" class="icon-button" aria-label="Toggle colour theme">☀</button><button id="profile" class="outline">Demo access</button><a class="button gold small" href="contribute.html">+
+        <!--
+GUIDE: EDIT MENU: Change each link label for its displayed text; change href for its destination.
+--><nav aria-label="Main navigation"><a href="index.html" aria-current="page">Home</a><a href="corpus.html">Corpus</a><a href="contribute.html">Contribute</a><a href="about.html">About Us</a></nav>
+        <div class="nav-actions"><!--
+GUIDE: EDIT BUTTON: theme. Change visible text after this tag; keep id/data attributes for the click handler. type=submit sends its form.
+--><button id="theme" class="icon-button" aria-label="Toggle colour theme">☀</button><!--
+GUIDE: EDIT BUTTON: profile. Change visible text after this tag; keep id/data attributes for the click handler. type=submit sends its form.
+--><button id="profile" class="outline">Demo access</button><a class="button gold small" href="contribute.html">+
                 Contribute</a></div>
     </header>
-    <main id="main" class="home-page">
-        <section class="hero">
-            <img class="hero-image" src="assets/kedah-heritage.png" alt="Golden Kedah paddy fields beneath mountains, with coconut palms, a traditional wooden house and a farmer." width="2172" height="724" fetchpriority="high">
-            <div class="hero-content">
-                <h1>Loghat Kami</h1>
-                <h2>Documenting, preserving and<br>celebrating the Kedah Malay dialect</h2>
+    <!--
+GUIDE: MAIN PAGE CONTENT: Edit the page sections below; keep existing IDs used by JavaScript.
+--><main id="main" class="home-page">
+        <!--
+GUIDE: EDIT BANNER: Picture/text are here; sizing, overlay and mobile rules are in css/heritage.css.
+--><section class="hero">
+            <!--
+GUIDE: EDIT IMAGE: Change src to another local asset; alt describes it. width/height define its original proportions; CSS controls display size.
+--><img class="hero-image" src="assets/kedah-heritage.png" alt="Golden Kedah paddy fields beneath mountains, with coconut palms, a traditional wooden house and a farmer." width="2172" height="724" fetchpriority="high">
+            <!--
+GUIDE: EDIT BANNER COPY: Heading, description and search are grouped inside this readable overlay panel.
+--><div class="hero-content">
+                <!--
+GUIDE: EDIT TEXT: Main page title. Text after this tag is visible on the page.
+--><h1>Loghat Kami</h1>
+                <!--
+GUIDE: EDIT TEXT: Section heading. Text after this tag is visible on the page.
+--><h2>Documenting, preserving and<br>celebrating the Kedah Malay dialect</h2>
                 <p>A community platform to collect, document and celebrate the richness of our dialect for generations to come.</p>
-                <form class="search hero-search" action="corpus.html"><span aria-hidden="true">⌕</span><input name="q" aria-label="Search Kedah dialect words" placeholder="Search Kedah dialect words…"><button aria-label="Search">Search</button></form>
+                <!--
+GUIDE: EDIT FORM: search hero-search. action sends the search to corpus.html; name=q becomes the search query.
+--><form class="search hero-search" action="corpus.html"><span aria-hidden="true">⌕</span><!--
+GUIDE: EDIT INPUT: q. type=text. placeholder is the hint; required makes it mandatory; maxlength/minlength limit text. Keep name/id matched to JS.
+--><input name="q" aria-label="Search Kedah dialect words" placeholder="Search Kedah dialect words…"><!--
+GUIDE: EDIT BUTTON: button. Change visible text after this tag; keep id/data attributes for the click handler. type=submit sends its form.
+--><button aria-label="Search">Search</button></form>
                 <div class="suggestions"><span>Try searching:</span><a href="corpus.html?q=balah">balah</a><a href="corpus.html?q=nyior">nyior</a><a href="corpus.html?q=agak">agak</a><a href="corpus.html?q=repek">repek</a><a href="corpus.html?q=hang">hang</a></div>
             </div>
             <div class="heritage-ribbon">LANGUAGE<br>HERITAGE<br>IDENTITY</div>
             <div class="hero-note"><strong>From Kedah,<br>for generations to come.</strong></div>
         </section>
-        <div class="home-lower">
-            <section class="stats" id="home-stats" aria-label="Demo corpus statistics"></section>
-            <section class="section featured-section">
+        <!--
+GUIDE: EDIT LOWER HOMEPAGE: Statistics, featured cards, journey links and workflow. Styling: css/home-lower.css.
+--><div class="home-lower">
+            <!--
+GUIDE: EDIT STATS: Empty container filled by the homepage block in js/app.js. Edit homeStat() there.
+--><section class="stats" id="home-stats" aria-label="Demo corpus statistics"></section>
+            <!--
+GUIDE: EDIT SECTION: section featured-section. Change headings/text below; find the same class in CSS for layout.
+--><section class="section featured-section">
                 <div class="section-heading">
                     <div><span class="section-kicker">THE WORDS THAT CONNECT US</span>
-                        <h2>Small words. A world of stories.</h2>
+                        <!--
+GUIDE: EDIT TEXT: Section heading. Text after this tag is visible on the page.
+--><h2>Small words. A world of stories.</h2>
                         <p>Discover the everyday words and stories shared by our community.</p>
                     </div><a href="corpus.html" class="text-link">View all words &nbsp; →</a></div>
-                <div class="featured-shell"><button class="carousel-arrow previous" id="featured-previous" aria-label="Previous featured words">‹</button>
-                    <div id="featured" class="word-grid"></div><button class="carousel-arrow next" id="featured-next" aria-label="Next featured words">›</button></div>
+                <div class="featured-shell"><!--
+GUIDE: EDIT BUTTON: featured-previous. Change visible text after this tag; keep id/data attributes for the click handler. type=submit sends its form.
+--><button class="carousel-arrow previous" id="featured-previous" aria-label="Previous featured words">‹</button>
+                    <!--
+GUIDE: EDIT CARDS: Homepage cards are generated by featuredCard() in js/app.js; words come from js/data.js or saved browser entries.
+--><div id="featured" class="word-grid"></div><!--
+GUIDE: EDIT BUTTON: featured-next. Change visible text after this tag; keep id/data attributes for the click handler. type=submit sends its form.
+--><button class="carousel-arrow next" id="featured-next" aria-label="Next featured words">›</button></div>
             </section>
-            <section class="section journey-section">
+            <!--
+GUIDE: EDIT SECTION: section journey-section. Change headings/text below; find the same class in CSS for layout.
+--><section class="section journey-section">
                 <div class="section-heading">
                     <div><span class="section-kicker">MAKE YOURSELF AT HOME</span>
-                        <h2>How will you be part of the story?</h2>
+                        <!--
+GUIDE: EDIT TEXT: Section heading. Text after this tag is visible on the page.
+--><h2>How will you be part of the story?</h2>
                         <p>Join Loghat Kami and play a part in preserving our language heritage.</p>
                     </div>
                 </div>
                 <div class="journey-grid">
-                    <a class="journey-card" href="corpus.html"><span class="journey-icon teal">▤</span><span><strong>Explore the corpus</strong><small>Discover the words and expressions of the Kedah dialect.</small></span><b aria-hidden="true">›</b></a>
-                    <a class="journey-card" href="contribute.html"><span class="journey-icon amber">＋</span><span><strong>Contribute a word</strong><small>Share your knowledge and pronunciation with the community.</small></span><b aria-hidden="true">›</b></a>
-                    <a class="journey-card" href="expert-login.html"><span class="journey-icon red">♧</span><span><strong>Professional expert access</strong><small>Approved experts review contributions for accuracy and authenticity.</small></span><b aria-hidden="true">›</b></a>
-                    <a class="journey-card" href="about.html"><span class="journey-icon cream">♧</span><span><strong>About Loghat Kami</strong><small>Get to know our mission and our shared vision.</small></span><b aria-hidden="true">›</b></a>
+                    <!--
+GUIDE: EDIT JOURNEY CARD: href is its destination; strong is its title; small is its description. Styled by .journey-card.
+--><a class="journey-card" href="corpus.html"><span class="journey-icon teal">▤</span><span><strong>Explore the corpus</strong><small>Discover the words and expressions of the Kedah dialect.</small></span><b aria-hidden="true">›</b></a>
+                    <!--
+GUIDE: EDIT JOURNEY CARD: href is its destination; strong is its title; small is its description. Styled by .journey-card.
+--><a class="journey-card" href="contribute.html"><span class="journey-icon amber">＋</span><span><strong>Contribute a word</strong><small>Share your knowledge and pronunciation with the community.</small></span><b aria-hidden="true">›</b></a>
+                    <!--
+GUIDE: EDIT JOURNEY CARD: href is its destination; strong is its title; small is its description. Styled by .journey-card.
+--><a class="journey-card" href="expert-login.html"><span class="journey-icon red">♧</span><span><strong>Professional expert access</strong><small>Approved experts review contributions for accuracy and authenticity.</small></span><b aria-hidden="true">›</b></a>
+                    <!--
+GUIDE: EDIT JOURNEY CARD: href is its destination; strong is its title; small is its description. Styled by .journey-card.
+--><a class="journey-card" href="about.html"><span class="journey-icon cream">♧</span><span><strong>About Loghat Kami</strong><small>Get to know our mission and our shared vision.</small></span><b aria-hidden="true">›</b></a>
                 </div>
             </section>
-            <section class="section how-section">
+            <!--
+GUIDE: EDIT SECTION: section how-section. Change headings/text below; find the same class in CSS for layout.
+--><section class="section how-section">
                 <div class="section-heading">
                     <div><span class="section-kicker">FROM A SINGLE WORD TO A SHARED HERITAGE</span>
-                        <h2>Your contribution makes a difference.</h2>
+                        <!--
+GUIDE: EDIT TEXT: Section heading. Text after this tag is visible on the page.
+--><h2>Your contribution makes a difference.</h2>
                         <p>Three simple steps help turn local knowledge into a lasting resource.</p>
                     </div>
                 </div>
@@ -84,7 +156,11 @@
             </section>
         </div>
     </main>
-    <footer><a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 50 60"
+    <!--
+GUIDE: EDIT FOOTER: Bottom logo, links and project information.
+--><footer><a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true"><!--
+GUIDE: VECTOR ICON: paths draw this logo/icon. CSS currentColor sets its colour; preserve viewBox to keep proportions.
+--><svg viewBox="0 0 50 60"
                     fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M25 55V9M25 55Q4 42 6 22M25 55Q46 42 44 22M25 55Q9 28 15 11M25 55Q41 28 35 11"
                         stroke="currentColor" stroke-width="2" />
@@ -92,10 +168,18 @@
                         d="M25 5Q13 17 25 27Q37 17 25 5M14 13Q4 24 18 32Q24 22 14 13M36 13Q46 24 32 32Q26 22 36 13M5 26Q1 39 18 43Q18 32 5 26M45 26Q49 39 32 43Q32 32 45 26M5 42Q9 54 23 55Q19 44 5 42M45 42Q41 54 27 55Q31 44 45 42"
                         fill="currentColor" />
                 </svg></span><span>Loghat Kami<small>LOCAL VOICES, SHARED HERITAGE</small></span></a>
-        <nav class="footer-nav" aria-label="Footer navigation"><a href="index.html">Home</a><a href="corpus.html">Corpus</a><a href="contribute.html">Contribute</a><a href="about.html">About</a></nav><span>FYP Prototype · 2026</span>
+        <!--
+GUIDE: EDIT MENU: Change each link label for its displayed text; change href for its destination.
+--><nav class="footer-nav" aria-label="Footer navigation"><a href="index.html">Home</a><a href="corpus.html">Corpus</a><a href="contribute.html">Contribute</a><a href="about.html">About</a></nav><span>FYP Prototype · 2026</span>
     </footer>
-    <dialog id="detail"><button class="dialog-close icon-button" aria-label="Close">✕</button>
-        <div id="detail-content"></div>
+    <!--
+GUIDE: DETAIL MODAL: Opened/closed in js/app.js; its contents are generated by details().
+--><dialog id="detail"><!--
+GUIDE: EDIT BUTTON: dialog-close icon-button. Change visible text after this tag; keep id/data attributes for the click handler. type=submit sends its form.
+--><button class="dialog-close icon-button" aria-label="Close">✕</button>
+        <!--
+GUIDE: EDIT POPUP: details() in js/app.js supplies the word information shown inside this dialog.
+--><div id="detail-content"></div>
     </dialog>
     <div id="toast" role="status"></div>
 </body>

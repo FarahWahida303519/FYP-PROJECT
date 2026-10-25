@@ -1,3 +1,9 @@
+// GUIDE: EDIT SAMPLE WORDS HERE. Each object below represents one entry.
+// GUIDE: id = unique key; word = dialect word; meaning = standard Malay definition;
+// GUIDE: example = original dialect sentence; district/location = origin;
+// GUIDE: status = approved (visible corpus), pending (review queue), revision or rejected.
+// GUIDE: sample:true labels an illustrative record. Keep commas between objects and quote text values.
+// GUIDE: Saved browser entries take priority over these defaults. To see changed seeds, use a fresh browser profile or deliberately reset your demo data after preserving anything needed.
 window.LK_SEED = [
 {id:'seed-1',word:'balah',meaning:'Membelah atau memotong.',example:'Dia balah kayu tu jadi dua.',district:'Langkawi',location:'Kampung Hilir',status:'approved',sample:true},
 {id:'seed-2',word:'nyior',meaning:'Kelapa.',example:'Pokok nyior belakang rumah tu tinggi.',district:'Kuala Muda',status:'approved',sample:true},
@@ -11,4 +17,5 @@ window.LK_SEED = [
 {id:'seed-10',word:'ligan',meaning:'Mengejar.',example:'Adik ligan ayam belakang rumah.',district:'Pokok Sena',status:'pending',sample:true},
 {id:'seed-11',word:'pi',meaning:'Pergi.',example:'Kami nak pi pekan.',district:'Bandar Baharu',status:'pending',sample:true}
 ];
+// GUIDE: EDIT DISTRICTS: These names populate dropdowns. Use the same spelling in each word entry.
 window.LK_DISTRICTS=['Baling','Bandar Baharu','Kota Setar','Kuala Muda','Kubang Pasu','Kulim','Langkawi','Padang Terap','Pendang','Pokok Sena','Sik','Yan'];

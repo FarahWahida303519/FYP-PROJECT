@@ -1,20 +1,36 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 
-<head>
+<!--
+GUIDE: FILE MAP: HTML controls structure/text; CSS controls appearance; js/app.js controls actions. Comments are invisible on the website.
+--><head>
     <meta charset="UTF-8">
-    <script>try{document.documentElement.dataset.theme=JSON.parse(localStorage.getItem("lk-theme"))||"light"}catch{}</script>
+    <!--
+GUIDE: THEME ON LOAD: Applies the stored theme before the page is drawn. Keep this script in the head.
+--><script>try{document.documentElement.dataset.theme=JSON.parse(localStorage.getItem("lk-theme"))||"light"}catch{}</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Loghat Kami — documenting and preserving the Kedah Malay dialect.">
     <title>Contribute · Loghat Kami</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/heritage.css">
-    <script src="js/data.js" defer></script>
-    <script src="js/app.js" defer></script>
+    <!--
+GUIDE: EDIT STYLE: css/style.css. Later stylesheets can override earlier ones.
+--><link rel="stylesheet" href="css/style.css">
+    <!--
+GUIDE: EDIT STYLE: css/heritage.css. Later stylesheets can override earlier ones.
+--><link rel="stylesheet" href="css/heritage.css">
+    <!--
+GUIDE: JAVASCRIPT: js/data.js. Example words and district names.
+--><script src="js/data.js" defer></script>
+    <!--
+GUIDE: JAVASCRIPT: js/app.js. Buttons, forms, search, cards and browser storage.
+--><script src="js/app.js" defer></script>
 </head>
 
 <body><a class="skip" href="#main">Skip to content</a>
-    <header><a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 50 60"
+    <!--
+GUIDE: EDIT HEADER: Logo, navigation links and account/theme controls. Change link href to change the destination.
+--><header><a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true"><!--
+GUIDE: VECTOR ICON: paths draw this logo/icon. CSS currentColor sets its colour; preserve viewBox to keep proportions.
+--><svg viewBox="0 0 50 60"
                     fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M25 55V9M25 55Q4 42 6 22M25 55Q46 42 44 22M25 55Q9 28 15 11M25 55Q41 28 35 11"
                         stroke="currentColor" stroke-width="2" />
@@ -22,45 +38,89 @@
                         d="M25 5Q13 17 25 27Q37 17 25 5M14 13Q4 24 18 32Q24 22 14 13M36 13Q46 24 32 32Q26 22 36 13M5 26Q1 39 18 43Q18 32 5 26M45 26Q49 39 32 43Q32 32 45 26M5 42Q9 54 23 55Q19 44 5 42M45 42Q41 54 27 55Q31 44 45 42"
                         fill="currentColor" />
                 </svg></span><span>Loghat Kami<small>OUR WORDS, OUR LIVING HERITAGE</small></span></a>
-        <nav aria-label="Main navigation"><a href="index.html">Home</a><a href="corpus.html">Corpus</a><a href="contribute.html" aria-current="page">Contribute</a><a href="about.html">About Us</a></nav>
-        <div class="nav-actions"><button id="theme" class="icon-button" aria-label="Toggle colour theme">☀</button><button id="profile" class="outline">Demo access</button><a class="button gold small" href="contribute.html">+
+        <!--
+GUIDE: EDIT MENU: Change each link label for its displayed text; change href for its destination.
+--><nav aria-label="Main navigation"><a href="index.html">Home</a><a href="corpus.html">Corpus</a><a href="contribute.html" aria-current="page">Contribute</a><a href="about.html">About Us</a></nav>
+        <div class="nav-actions"><!--
+GUIDE: EDIT BUTTON: theme. Change visible text after this tag; keep id/data attributes for the click handler. type=submit sends its form.
+--><button id="theme" class="icon-button" aria-label="Toggle colour theme">☀</button><!--
+GUIDE: EDIT BUTTON: profile. Change visible text after this tag; keep id/data attributes for the click handler. type=submit sends its form.
+--><button id="profile" class="outline">Demo access</button><a class="button gold small" href="contribute.html">+
                 Contribute</a></div>
     </header>
-    <main id="main" class="page">
+    <!--
+GUIDE: MAIN PAGE CONTENT: Edit the page sections below; keep existing IDs used by JavaScript.
+--><main id="main" class="page">
         <div class="page-intro"><span class="eyebrow">YOUR VOICE MATTERS</span>
-            <h1>Contribute a dialect word</h1>
+            <!--
+GUIDE: EDIT TEXT: Main page title. Text after this tag is visible on the page.
+--><h1>Contribute a dialect word</h1>
             <p>Help us document the language that is part of our everyday lives.</p>
         </div>
         <div class="workflow"><span class="active">01 &nbsp; Word information</span><span>02 &nbsp; Preliminary screening</span><span>03 &nbsp; Expert review</span></div>
-        <form id="contribution" class="contribution-layout">
-            <section class="panel">
-                <h2>Word information</h2>
-                <p class="muted">Fields marked * are required.</p><label>Dialect word *<input name="word" required
-                        maxlength="80" placeholder="Example: balah"></label><label>Meaning in standard Malay *<textarea
+        <!--
+GUIDE: EDIT CONTRIBUTION FORM: Keep name attributes aligned with the submission handler in js/app.js.
+--><form id="contribution" class="contribution-layout">
+            <!--
+GUIDE: EDIT SECTION: panel. Change headings/text below; find the same class in CSS for layout.
+--><section class="panel">
+                <!--
+GUIDE: EDIT TEXT: Section heading. Text after this tag is visible on the page.
+--><h2>Word information</h2>
+                <p class="muted">Fields marked * are required.</p><label>Dialect word *<!--
+GUIDE: EDIT INPUT: word. type=text. placeholder is the hint; required makes it mandatory; maxlength/minlength limit text. Keep name/id matched to JS.
+--><input name="word" required
+                        maxlength="80" placeholder="Example: balah"></label><label>Meaning in standard Malay *<!--
+GUIDE: EDIT INPUT: meaning. placeholder is the hint; required makes it mandatory; maxlength/minlength limit text. Keep name/id matched to JS.
+--><textarea
                         name="meaning" required maxlength="1000"
-                        placeholder="Explain what this word means…"></textarea></label><label>Example sentence *<textarea
+                        placeholder="Explain what this word means…"></textarea></label><label>Example sentence *<!--
+GUIDE: EDIT INPUT: example. placeholder is the hint; required makes it mandatory; maxlength/minlength limit text. Keep name/id matched to JS.
+--><textarea
                         name="example" required maxlength="1000"
-                        placeholder="Example: Dia balah kayu tu jadi dua."></textarea></label><label>Additional notes<textarea name="notes" maxlength="1500"
+                        placeholder="Example: Dia balah kayu tu jadi dua."></textarea></label><label>Additional notes<!--
+GUIDE: EDIT INPUT: notes. placeholder is the hint; required makes it mandatory; maxlength/minlength limit text. Keep name/id matched to JS.
+--><textarea name="notes" maxlength="1500"
                         placeholder="Usage context or pronunciation variants (optional)"></textarea></label>
             </section>
             <aside>
-                <section class="panel">
-                    <h2>Origin & pronunciation</h2><label>District *<select name="district" required>
+                <!--
+GUIDE: EDIT SECTION: panel. Change headings/text below; find the same class in CSS for layout.
+--><section class="panel">
+                    <!--
+GUIDE: EDIT TEXT: Section heading. Text after this tag is visible on the page.
+--><h2>Origin & pronunciation</h2><label>District *<!--
+GUIDE: EDIT DROPDOWN: district. Options may be written below or added from LK_DISTRICTS in js/data.js. Keep option values matched to JS.
+--><select name="district" required>
                             <option value="">Select a district</option>
-                        </select></label><label>Village / location<input name="location" maxlength="120"
+                        </select></label><label>Village / location<!--
+GUIDE: EDIT INPUT: location. type=text. placeholder is the hint; required makes it mandatory; maxlength/minlength limit text. Keep name/id matched to JS.
+--><input name="location" maxlength="120"
                             placeholder="Example: Kampung Hilir"></label>
                     <div class="location-card">⌖
                         <div><strong>Every place has its own story.</strong><small>Location helps document regional dialect variations.</small></div>
-                    </div><label class="upload">↑<strong>Upload pronunciation audio</strong><small>MP3, WAV, OGG or M4A · maximum 5 MB</small><input type="file" name="audio" accept="audio/*,.m4a"></label><audio id="audio-preview" controls hidden></audio><button type="button" class="outline full" id="record">● Record pronunciation</button>
+                    </div><label class="upload">↑<strong>Upload pronunciation audio</strong><small>MP3, WAV, OGG or M4A · maximum 5 MB</small><!--
+GUIDE: EDIT INPUT: audio. type=file. placeholder is the hint; required makes it mandatory; maxlength/minlength limit text. Keep name/id matched to JS.
+--><input type="file" name="audio" accept="audio/*,.m4a"></label><audio id="audio-preview" controls hidden></audio><!--
+GUIDE: EDIT BUTTON: record. Change visible text after this tag; keep id/data attributes for the click handler. type=submit sends its form.
+--><button type="button" class="outline full" id="record">● Record pronunciation</button>
                     <p id="audio-status" class="muted" role="status">Audio is optional. Recording requires microphone permission.
                     </p>
                 </section>
                 <div class="notice">✦ <span>An expert will review your contribution before it appears in the corpus.</span></div>
             </aside>
-            <div class="form-actions"><button type="button" class="outline" id="save-draft">Save draft</button><button class="button gold" type="submit">Submit for screening &nbsp; ↗</button></div>
+            <div class="form-actions"><!--
+GUIDE: EDIT BUTTON: save-draft. Change visible text after this tag; keep id/data attributes for the click handler. type=submit sends its form.
+--><button type="button" class="outline" id="save-draft">Save draft</button><!--
+GUIDE: EDIT BUTTON: button gold. Change visible text after this tag; keep id/data attributes for the click handler. type=submit sends its form.
+--><button class="button gold" type="submit">Submit for screening &nbsp; ↗</button></div>
         </form>
     </main>
-    <footer><a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 50 60"
+    <!--
+GUIDE: EDIT FOOTER: Bottom logo, links and project information.
+--><footer><a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true"><!--
+GUIDE: VECTOR ICON: paths draw this logo/icon. CSS currentColor sets its colour; preserve viewBox to keep proportions.
+--><svg viewBox="0 0 50 60"
                     fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M25 55V9M25 55Q4 42 6 22M25 55Q46 42 44 22M25 55Q9 28 15 11M25 55Q41 28 35 11"
                         stroke="currentColor" stroke-width="2" />
@@ -68,10 +128,18 @@
                         d="M25 5Q13 17 25 27Q37 17 25 5M14 13Q4 24 18 32Q24 22 14 13M36 13Q46 24 32 32Q26 22 36 13M5 26Q1 39 18 43Q18 32 5 26M45 26Q49 39 32 43Q32 32 45 26M5 42Q9 54 23 55Q19 44 5 42M45 42Q41 54 27 55Q31 44 45 42"
                         fill="currentColor" />
                 </svg></span><span>Loghat Kami<small>LOCAL VOICES, SHARED HERITAGE</small></span></a>
-        <nav class="footer-nav" aria-label="Footer navigation"><a href="index.html">Home</a><a href="corpus.html">Corpus</a><a href="contribute.html">Contribute</a><a href="about.html">About</a></nav><span>FYP Prototype · 2026</span>
+        <!--
+GUIDE: EDIT MENU: Change each link label for its displayed text; change href for its destination.
+--><nav class="footer-nav" aria-label="Footer navigation"><a href="index.html">Home</a><a href="corpus.html">Corpus</a><a href="contribute.html">Contribute</a><a href="about.html">About</a></nav><span>FYP Prototype · 2026</span>
     </footer>
-    <dialog id="detail"><button class="dialog-close icon-button" aria-label="Close">✕</button>
-        <div id="detail-content"></div>
+    <!--
+GUIDE: DETAIL MODAL: Opened/closed in js/app.js; its contents are generated by details().
+--><dialog id="detail"><!--
+GUIDE: EDIT BUTTON: dialog-close icon-button. Change visible text after this tag; keep id/data attributes for the click handler. type=submit sends its form.
+--><button class="dialog-close icon-button" aria-label="Close">✕</button>
+        <!--
+GUIDE: EDIT POPUP: details() in js/app.js supplies the word information shown inside this dialog.
+--><div id="detail-content"></div>
     </dialog>
     <div id="toast" role="status"></div>
 </body>

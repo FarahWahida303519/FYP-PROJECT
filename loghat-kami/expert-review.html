@@ -1,6 +1,36 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
-<head><meta charset="UTF-8"><script>try{document.documentElement.dataset.theme='dark'}catch{}</script><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Private expert review queue for Loghat Kami."><title>Review queue · Loghat Kami</title><link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/expert.css"><script src="js/data.js" defer></script><script src="js/app.js" defer></script></head>
-<body id="expert-page" class="expert-shell"><a class="skip" href="#main">Skip to content</a><header class="expert-header"><a class="brand" href="expert.html"><span class="brand-icon">◈</span><span>Loghat Kami<small>EXPERT LANGUAGE WORKSPACE</small></span></a><div class="expert-header-right"><span class="expert-pill">● Verified workspace</span><a class="expert-profile" href="expert.html">Dashboard ↗</a></div></header>
+<!--
+GUIDE: FILE MAP: HTML controls structure/text; CSS controls appearance; js/app.js controls actions. Comments are invisible on the website.
+--><head><meta charset="UTF-8"><!--
+GUIDE: THEME ON LOAD: Applies the stored theme before the page is drawn. Keep this script in the head.
+--><script>try{document.documentElement.dataset.theme='dark'}catch{}</script><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Private expert review queue for Loghat Kami."><title>Review queue · Loghat Kami</title><!--
+GUIDE: EDIT STYLE: css/style.css. Later stylesheets can override earlier ones.
+--><link rel="stylesheet" href="css/style.css"><!--
+GUIDE: EDIT STYLE: css/expert.css. Later stylesheets can override earlier ones.
+--><link rel="stylesheet" href="css/expert.css"><!--
+GUIDE: JAVASCRIPT: js/data.js. Example words and district names.
+--><script src="js/data.js" defer></script><!--
+GUIDE: JAVASCRIPT: js/app.js. Buttons, forms, search, cards and browser storage.
+--><script src="js/app.js" defer></script></head>
+<body id="expert-page" class="expert-shell"><a class="skip" href="#main">Skip to content</a><!--
+GUIDE: EDIT HEADER: Logo, navigation links and account/theme controls. Change link href to change the destination.
+--><header class="expert-header"><a class="brand" href="expert.html"><span class="brand-icon">◈</span><span>Loghat Kami<small>EXPERT LANGUAGE WORKSPACE</small></span></a><div class="expert-header-right"><span class="expert-pill">● Verified workspace</span><a class="expert-profile" href="expert.html">Dashboard ↗</a></div></header>
 <div class="expert-app"><aside class="expert-sidebar"><div class="sidebar-label">WORKSPACE</div><a class="side-link" href="expert.html"><span>▦</span>Dashboard</a><a class="side-link active" href="expert-review.html"><span>◷</span>Review queue <b id="sidebar-pending">3</b></a><a class="side-link" href="corpus.html"><span>⌕</span>Public corpus</a><div class="sidebar-divider"></div><div class="sidebar-label">ACCOUNT</div><a class="side-link" href="account.html#settings"><span>⚙</span>Settings</a><a class="side-link" href="index.html"><span>↩</span>Exit workspace</a></aside>
-<main id="main" class="expert-main page review-workspace"><div class="review-title"><div><span class="eyebrow">PRIVATE REVIEW WORKSPACE</span><h1>Review queue</h1><p>Make careful, documented decisions before words enter the public corpus.</p></div><a class="outline" href="expert.html">← Dashboard</a></div><div id="review-stats" class="expert-metrics"></div><div class="review-filter-row"><label for="review-filter">Showing<select id="review-filter"><option value="pending">Awaiting review</option><option value="revision">Revision requested</option><option value="approved">Approved</option><option value="rejected">Rejected</option></select></label><span class="review-guidance">Every decision requires an expert reason for the record.</span></div><div class="expert-review-grid"><section class="dashboard-panel review-list-panel"><span class="eyebrow">CONTRIBUTIONS</span><h2>Items to review</h2><div id="review-list"></div></section><section class="dashboard-panel review-detail-panel" id="review-detail"></section></div></main></div><footer class="expert-footer"><span>Loghat Kami · Professional workspace</span><a href="account.html#settings">Account settings</a><span>FYP Prototype · 2026</span></footer><div id="toast" role="status"></div></body></html>
+<!--
+GUIDE: MAIN PAGE CONTENT: Edit the page sections below; keep existing IDs used by JavaScript.
+--><main id="main" class="expert-main page review-workspace"><div class="review-title"><div><span class="eyebrow">PRIVATE REVIEW WORKSPACE</span><!--
+GUIDE: EDIT TEXT: Main page title. Text after this tag is visible on the page.
+--><h1>Review queue</h1><p>Make careful, documented decisions before words enter the public corpus.</p></div><a class="outline" href="expert.html">← Dashboard</a></div><div id="review-stats" class="expert-metrics"></div><div class="review-filter-row"><label for="review-filter">Showing<!--
+GUIDE: EDIT DROPDOWN: review-filter. Options may be written below or added from LK_DISTRICTS in js/data.js. Keep option values matched to JS.
+--><select id="review-filter"><option value="pending">Awaiting review</option><option value="revision">Revision requested</option><option value="approved">Approved</option><option value="rejected">Rejected</option></select></label><span class="review-guidance">Every decision requires an expert reason for the record.</span></div><div class="expert-review-grid"><!--
+GUIDE: EDIT SECTION: dashboard-panel review-list-panel. Change headings/text below; find the same class in CSS for layout.
+--><section class="dashboard-panel review-list-panel"><span class="eyebrow">CONTRIBUTIONS</span><!--
+GUIDE: EDIT TEXT: Section heading. Text after this tag is visible on the page.
+--><h2>Items to review</h2><!--
+GUIDE: EDIT REVIEW LIST: JavaScript fills this container with contribution buttons.
+--><div id="review-list"></div></section><!--
+GUIDE: EDIT REVIEW FORM: JavaScript inserts editable fields and decision buttons here. See the #review-list block in js/app.js.
+--><section class="dashboard-panel review-detail-panel" id="review-detail"></section></div></main></div><!--
+GUIDE: EDIT FOOTER: Bottom logo, links and project information.
+--><footer class="expert-footer"><span>Loghat Kami · Professional workspace</span><a href="account.html#settings">Account settings</a><span>FYP Prototype · 2026</span></footer><div id="toast" role="status"></div></body></html>
